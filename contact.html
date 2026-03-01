@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us — RASA</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <link rel="stylesheet" href="./rasa.css">
+        <style>
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.5fr;
+                gap: 72px;
+                align-items: start;
+            }
+            .info-item {
+                display: flex;
+                gap: 16px;
+                margin-bottom: 32px;
+                align-items: flex-start;
+            }
+            .info-icon {
+                width: 46px;
+                height: 46px;
+                background: linear-gradient(135deg,var(--gold-deep),var(--gold));
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                font-size: 1.1rem;
+            }
+            .info-label {
+                font-family: "Poppins", sans-serif;
+                font-size: 0.58rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 4px;
+            }
+            .info-value {
+                font-family: "Playfair Display", serif;
+                font-size: 0.9rem;
+                color: var(--ink-faint);
+                line-height: 1.6;
+            }
+            .info-value a {
+                color: var(--ink-faint);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            .info-value a:hover {
+                color: var(--gold-deep);
+            }
+            .sidebar-note {
+                margin-top: 32px;
+                padding: 30px 28px;
+                /* background: linear-gradient(135deg,var(--parch-2),var(--parch-3)); */
+                background-image: url(./Images/main-bg.jpeg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border: 1px solid rgba(201, 168, 76, 0.3);
+                border-left: 3px solid var(--gold);
+                border-radius: 2px;
+            }
+            .sidebar-note p {
+                font-family: "Playfair Display", serif;
+                font-style: italic;
+                font-size: 0.95rem;
+                color: var(--ink-mid);
+                line-height: 1.8;
+            }
+            .form-wrap {
+                /* background: linear-gradient(160deg,var(--ivory),var(--parch)); */
+                background-image: url(./Images/main-bg.jpeg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                border: 1px solid rgba(201, 168, 76, 0.25);
+                padding: 44px;
+                border-radius: 20px;
+            }
+            .form-2col {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+            }
+            .form-group {
+                margin-bottom: 16px;
+            }
+            .form-group label {
+                display: block;
+                font-family: "Poppins", sans-serif;
+                font-size: 0.58rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                color: var(--ink-faint);
+                margin-bottom: 7px;
+            }
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                width: 100%;
+                background: var(--ivory);
+                border: 1px solid rgba(201, 168, 76, 0.25);
+                border-radius: 1px;
+                padding: 10px 12px;
+                font-family: "Playfair Display", serif;
+                font-size: 0.9rem;
+                color: var(--ink);
+                outline: none;
+                transition: border-color 0.3s;
+            }
+            .form-group input:focus,
+            .form-group textarea:focus,
+            .form-group select:focus {
+                border-color: rgba(201, 168, 76, 0.55);
+                box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+            }
+            .form-group textarea {
+                resize: none;
+                min-height: 130px;
+            }
+            .form-group input::placeholder,
+            .form-group textarea::placeholder {
+                color: rgba(58, 42, 16, 0.3);
+            }
+            .phone-row {
+                display: flex;
+                gap: 12px;
+            }
+            .phone-row .form-group:first-child {
+                flex: 0 0 140px;
+            }
+            .phone-row .form-group:last-child {
+                flex: 1;
+            }
+            @media(max-width:1100px) {
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                }
+                .form-2col,
+                .phone-row {
+                    grid-template-columns: 1fr;
+                    flex-direction: column;
+                }
+                .phone-row .form-group:first-child {
+                    flex: none;
+                }
+                .form-wrap {
+                    padding: 28px 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <aside class="sidebar" id="sidebar">
+            <svg class="sidebar-deco sidebar-deco-top" width="76" height="76" viewbox="0 0 76 76">
+                <g fill="none" stroke="#C9A84C" stroke-width="1"><circle cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="16"/><path d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z"/></g>
+            </svg>
+            <svg class="sidebar-deco sidebar-deco-bot" width="76" height="76" viewbox="0 0 76 76">
+                <g fill="none" stroke="#C9A84C" stroke-width="1"><circle cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="8"/><path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38"/><circle cx="38" cy="38" r="3"/></g>
+            </svg>
+
+            <a href="./index.html" class="sidebar-logo">
+                <img src="./logo.png" alt="RASA">
+                <!-- <span class="sidebar-logo-name">RASA</span>
+                <span class="sidebar-logo-tag">Premium Spices &amp; Blends</span> -->
+            </a>
+            <div class="sidebar-rule"></div>
+            <ul class="nav-list">
+                <li>
+                    <a href="./index.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> -->
+                        Home</a>
+                </li>
+                <li>
+                    <a href="./about.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> -->
+                        About Us</a>
+                </li>
+                <li>
+                    <a href="./products.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg> -->
+                        Products</a>
+                </li>
+                <li>
+                    <a href="./recipes/">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg> -->
+                        Recipes</a>
+                </li>
+                <li>
+                    <a href="./purchase.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> -->
+                        Purchase</a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="active">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> -->
+                        Contact Us</a>
+                </li>
+            </ul>
+            <div class="sidebar-buy">
+                <a href="https://blinkit.com" target="_blank">Buy on Blinkit</a>
+            </div>
+            <span class="sidebar-copy">© 2026 RASA</span>
+        </aside>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <main class="page-wrap">
+            <div class="page-hero">
+                <div class="page-hero-inner">
+                    <div class="page-hero-tag">Get in Touch</div>
+                    <h1 class="page-hero-title">Let's
+                        <em>Talk</em>
+                    </h1>
+                </div>
+            </div>
+
+            <section style="background:var(--ivory);">
+                <div class="contact-grid">
+                    <div>
+                        <div class="eyebrow fade-up">Contact RASA</div>
+                        <h2 class="sec-title fade-up" style="font-size:2rem;margin-bottom:36px;">We'd Love to<br><em>Hear from You</em>
+                        </h2>
+                        <div class="info-item fade-up">
+                            <div class="info-icon">✉</div>
+                            <div>
+                                <div class="info-label">Email</div>
+                                <div class="info-value">
+                                    <a href="mailto:hello@rasa.in">hello@rasa.in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-item fade-up">
+                            <div class="info-icon">☎</div>
+                            <div>
+                                <div class="info-label">Phone</div>
+                                <div class="info-value">
+                                    <a href="tel:+919876543210">+91 98765 43210</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-item fade-up">
+                            <div class="info-icon">◎</div>
+                            <div>
+                                <div class="info-label">Address</div>
+                                <div class="info-value">Mumbai, Maharashtra<br>India — 400001</div>
+                            </div>
+                        </div>
+                        <div class="info-item fade-up">
+                            <div class="info-icon">◷</div>
+                            <div>
+                                <div class="info-label">Hours</div>
+                                <div class="info-value">Mon – Fri, 10:00 AM – 6:00 PM IST</div>
+                            </div>
+                        </div>
+                        <div class="sidebar-note fade-up">
+                            <p>"Every question, every suggestion, every story about a meal you made with RASA — we want to hear it all."</p>
+                        </div>
+                    </div>
+                    <div class="form-wrap fade-up">
+                        <div class="eyebrow" style="margin-bottom:24px;">Send a Message</div>
+                        <div class="form-2col">
+                            <div class="form-group">
+                                <label>Your Name</label><input type="text" placeholder="Full name"></div>
+                            <div class="form-group">
+                                <label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+                        </div>
+                        <div class="phone-row">
+                            <div class="form-group">
+                                <label>Country Code</label>
+                                <select>
+                                    <option>🇮🇳 (+91)</option>
+                                    <option>🇺🇸 (+1)</option>
+                                    <option>🇬🇧 (+44)</option>
+                                    <option>🇦🇺 (+61)</option>
+                                    <option>🇦🇪 (+971)</option>
+                                    <option>🇸🇬 (+65)</option>
+                                    <option>🇲🇾 (+60)</option>
+                                    <option>🇱🇰 (+94)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile Number</label><input type="tel" placeholder="XXXXX XXXXX"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label><input type="text" placeholder="How can we help?"></div>
+                        <div class="form-group">
+                            <label>Your Message</label>
+                            <textarea placeholder="Tell us more..."></textarea>
+                        </div>
+                        <button class="btn-gold" style="width:100%;padding:14px;font-size:0.7rem;border:none;cursor:pointer;" onclick="this.textContent='Message Sent ✓';this.style.background='linear-gradient(135deg,#5C4020,#8A6A3A)';setTimeout(()=>{this.textContent='Send Message';this.style.background='';},3000)">Send Message</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-grid">
+                    <div>
+                        <img src="./logo.png" alt="RASA" class="footer-logo">
+                        <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted for modern kitchens.</p>
+                        <div class="footer-socials">
+                            <a class="soc-icon" href="#">
+                                <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+                            </a>
+                            <a class="soc-icon" href="#">
+                                <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                            </a>
+                            <a class="soc-icon" href="#">
+                                <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M16 8a6 6 0 016 6v6"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Explore</h5>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="./index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./about.html">About Us</a>
+                            </li>
+                            <li>
+                                <a href="./products.html">Products</a>
+                            </li>
+                            <li>
+                                <a href="./recipes/">Recipes</a>
+                            </li>
+                            <li>
+                                <a href="./contact.html">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="./purchase.html">Purchase</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Contact</h5>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="mailto:hello@rasa.in">hello@rasa.in</a>
+                            </li>
+                            <li>
+                                <a href="tel:+919876543210">+91 98765 43210</a>
+                            </li>
+                            <li>
+                                <a>Mumbai, India</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact-col">
+                        <h5>Get in Touch</h5>
+                        <div class="footer-form-group"><input type="text" placeholder="Your Name"></div>
+                        <div class="footer-form-group footer-phone-row">
+                            <select class="footer-cc">
+                                <option>🇮🇳 +91</option>
+                                <option>🇺🇸 +1</option>
+                                <option>🇬🇧 +44</option>
+                                <option>🇦🇺 +61</option>
+                                <option>🇦🇪 +971</option>
+                                <option>🇸🇬 +65</option>
+                            </select>
+                            <input type="tel" placeholder="Mobile Number" style="flex:1;width:auto;">
+                        </div>
+                        <div class="footer-form-group">
+                            <textarea placeholder="Your message..."></textarea>
+                        </div>
+                        <button class="footer-submit" onclick="this.textContent='Sent ✓';setTimeout(()=>this.textContent='Send Message',3000)">Send Message</button>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="footer-copy">© 2026
+                        <span>RASA</span>. All rights reserved.</p>
+                    <p class="footer-copy">Flavor. Made Simple.</p>
+                </div>
+            </footer>
+        </main>
+        <script>
+            const ham = document.getElementById('hamburger'),
+                sb = document.getElementById('sidebar');
+            ham.addEventListener('click', () => sb.classList.toggle('open'));
+            document.addEventListener('click', e => {
+                if (! sb.contains(e.target) && ! ham.contains(e.target)) 
+                    sb.classList.remove('open');
+                
+            });
+            window.addEventListener('load', () => {
+                if (typeof gsap === 'undefined') 
+                    return;
+                
+                gsap.registerPlugin(ScrollTrigger);
+                document.querySelectorAll('.fade-up').forEach(el => {
+                    gsap.fromTo(el, {
+                        opacity: 0,
+                        y: 28
+                    }, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.82,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 88%',
+                            toggleActions: 'play none none none'
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
