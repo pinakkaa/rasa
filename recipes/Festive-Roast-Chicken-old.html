@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Festive Roast Chicken — RASA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ── BRAND TOKENS (exact from shared.css) ─────────── */
+      :root {
+        --gold: #c9a84c;
+        --gold-light: #d4b96a;
+        --deep-brown: #5c4020;
+        --cream: #f7edd8;
+        --beige: #efe0c0;
+        --dark-brown: #3a2a10;
+        --text-brown: #3a2a10;
+      }
+
+      /* ── RESET ─────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--cream);
+        color: var(--text-brown);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Paper texture — same as shared.css */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.4;
+      }
+
+      /* ── SHARED TYPOGRAPHY (mirrors shared.css) ────────── */
+      .section-eyebrow {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        font-family: "Poppins", sans-serif;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 600;
+        color: var(--dark-brown);
+        line-height: 1.15;
+        margin-bottom: 20px;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .gold-line {
+        width: 50px;
+        height: 1px;
+        background: var(--gold);
+        margin-bottom: 28px;
+      }
+
+      /* ── SCROLL REVEAL (same as site) ──────────────────── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.75s ease, transform 0.75s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .fade-up.d1 {
+        transition-delay: 0.08s;
+      }
+      .fade-up.d2 {
+        transition-delay: 0.16s;
+      }
+      .fade-up.d3 {
+        transition-delay: 0.24s;
+      }
+      .fade-up.d4 {
+        transition-delay: 0.32s;
+      }
+      .fade-up.d5 {
+        transition-delay: 0.4s;
+      }
+
+      /* ── BUTTONS (from shared.css) ─────────────────────── */
+      .btn-primary {
+        background: var(--gold);
+        color: var(--dark-brown);
+        padding: 14px 32px;
+        border: none;
+        border-radius: 2px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-primary:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(198, 166, 70, 0.3);
+      }
+      .btn-dark {
+        background: var(--dark-brown);
+        color: var(--cream);
+        padding: 14px 32px;
+        border: none;
+        border-radius: 2px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: inline-block;
+        text-decoration: none;
+      }
+      .btn-dark:hover {
+        background: var(--deep-brown);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(43, 30, 22, 0.25);
+      }
+
+      /* ══════════════════════════════════════════════════════
+   §1  HERO
+══════════════════════════════════════════════════════ */
+      .recipe-hero {
+            /* background: var(--dark-brown); */
+            padding: 80px 60px 0;
+            position: relative;
+            overflow: hidden;
+            background-image: url(../Images/main-bg.jpeg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+      }
+      .recipe-hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+      .recipe-hero-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 75% 40%,
+          rgba(198, 166, 70, 0.07) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .recipe-hero-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 0;
+        align-items: end;
+      }
+
+      /* Left — text */
+      .recipe-hero-text {
+        padding-bottom: 64px;
+      }
+
+      .recipe-hero-tag {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .recipe-hero-tag::before {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.6;
+      }
+
+      .recipe-hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+        font-weight: 700;
+        color: var(--dark-brown);
+        line-height: 1.08;
+        margin-bottom: 28px;
+      }
+      .recipe-hero-title em {
+        color: var(--gold);
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .recipe-hero-desc {
+        font-size: 0.75rem;
+        font-weight: 300;
+        color: var(--gold);
+        line-height: 1.9;
+        max-width: 480px;
+        margin-bottom: 48px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .recipe-hero-stats {
+        display: flex;
+        gap: 40px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(198, 166, 70, 0.12);
+        flex-wrap: wrap;
+      }
+      .hero-stat-label {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--dark-brown);
+        display: block;
+        margin-bottom: 5px;
+      }
+      .hero-stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: #000;
+      }
+
+      /* Right — product visual */
+      .recipe-hero-visual {
+        align-self: flex-end;
+        display: flex;
+        justify-content: center;
+      }
+      .recipe-hero-card {
+        width: 290px;
+        background: var(--deep-brown);
+        border-radius: 2px 2px 0 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .recipe-hero-card-top {
+        height: 280px;
+        /* background: linear-gradient(160deg, #3D2010 0%, #1A0E08 100%); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background-image: url(./Images/Roast\ Chicken.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .recipe-hero-card-top::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 50% 20%,
+          rgba(198, 166, 70, 0.1) 0%,
+          transparent 60%
+        );
+      }
+      .recipe-hero-card-emoji {
+        font-size: 5.5rem;
+        opacity: 0.18;
+        filter: blur(1px);
+        position: absolute;
+        bottom: -12px;
+        right: -8px;
+      }
+      .recipe-hero-card-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: var(--gold);
+        color: var(--dark-brown);
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        border-radius: 2px;
+        z-index: 2;
+      }
+      /* Steam lines */
+      .steam-wrap {
+        position: absolute;
+        top: 18%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 16px;
+        z-index: 1;
+      }
+      .steam-strand {
+        width: 1.5px;
+        height: 44px;
+        background: linear-gradient(
+          to top,
+          rgba(198, 166, 70, 0.3),
+          transparent
+        );
+        border-radius: 2px;
+        animation: steamrise 3s ease-in-out infinite;
+      }
+      .steam-strand:nth-child(2) {
+        animation-delay: 0.8s;
+        height: 56px;
+      }
+      .steam-strand:nth-child(3) {
+        animation-delay: 1.6s;
+        height: 36px;
+      }
+      @keyframes steamrise {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scaleY(0.3) translateY(8px);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleY(1) translateY(-8px);
+        }
+      }
+
+      .recipe-hero-card-body {
+        padding: 18px 20px 22px;
+        background: var(--deep-brown);
+      }
+      .recipe-hero-card-eyebrow {
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(198, 166, 70, 0.5);
+        margin-bottom: 4px;
+        font-weight: 500;
+      }
+      .recipe-hero-card-name {
+        font-family: "Playfair Display", serif;
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: var(--cream);
+        line-height: 1.35;
+      }
+
+      /* ══════════════════════════════════════════════════════
+   CONTENT WRAPPER
+══════════════════════════════════════════════════════ */
+      .recipe-body {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Section spacing */
+      .recipe-section {
+        padding: 80px 0;
+        border-bottom: 1px solid rgba(90, 62, 43, 0.1);
+      }
+      .recipe-section:last-child {
+        border-bottom: none;
+      }
+
+      /* ══════════════════════════════════════════════════════
+   §2  INGREDIENTS
+══════════════════════════════════════════════════════ */
+      .ing-card {
+        /* background: var(--beige); */
+        background-image: url(../Images/main-bg.jpeg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 2px;
+        padding: 44px 48px;
+        border: 1px solid rgba(198, 166, 70, 0.12);
+      }
+
+      .ing-group-label {
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--text-brown);
+        opacity: 0.5;
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .ing-group-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(90, 62, 43, 0.12);
+      }
+
+      .ing-row {
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        row-gap: 28px;
+      }
+
+      .ing-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 11px;
+      }
+      .ing-item-circle {
+        width: 82px;
+        height: 82px;
+        background: #ffffff;
+        border: 1.5px solid rgba(198, 166, 70, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+      .ing-item-circle::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 33% 33%,
+          rgba(255, 255, 255, 0.45),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+      .ing-item:hover .ing-item-circle {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(90, 62, 43, 0.12);
+      }
+      .ing-item-name {
+        font-size: 0.68rem;
+        font-weight: 400;
+        color: var(--text-brown);
+        text-align: center;
+        max-width: 74px;
+        line-height: 1.35;
+        opacity: 0.75;
+      }
+
+      .ing-plus {
+        font-size: 0.9rem;
+        color: var(--gold);
+        opacity: 0.45;
+        align-self: center;
+        margin-bottom: 32px;
+        padding: 0 8px;
+        font-weight: 300;
+        flex-shrink: 0;
+      }
+
+      .ing-divider {
+        margin: 36px 0 28px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .ing-divider::before,
+      .ing-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(90, 62, 43, 0.1);
+      }
+      .ing-divider-label {
+        font-family: "Playfair Display", serif;
+        font-size: 0.85rem;
+        font-style: italic;
+        color: var(--deep-brown);
+        opacity: 0.65;
+        white-space: nowrap;
+      }
+
+      /* ══════════════════════════════════════════════════════
+   §3  STEPS
+══════════════════════════════════════════════════════ */
+      .steps-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .step-row {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 0 32px;
+        padding: 32px 0;
+        border-bottom: 1px solid rgba(90, 62, 43, 0.08);
+        position: relative;
+      }
+      .step-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .step-row:first-child {
+        padding-top: 0;
+      }
+
+      /* Vertical connector */
+      .step-row:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 29px;
+        top: 76px;
+        bottom: 0;
+        width: 1px;
+        background: rgba(198, 166, 70, 0.14);
+      }
+
+      .step-num-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 4px;
+      }
+      .step-badge {
+        width: 36px;
+        height: 36px;
+        background: var(--dark-brown);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--gold);
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(198, 166, 70, 0.2);
+      }
+
+      .step-body {
+        padding-top: 12px;
+      }
+
+      .step-body-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .step-body-text {
+        font-size: 0.84rem;
+        font-weight: 300;
+        color: var(--text-brown);
+        line-height: 1.85;
+        opacity: 0.85;
+      }
+      .step-body-text + .step-body-text {
+        margin-top: 8px;
+      }
+
+      /* Quantity cards */
+      .step-variants {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .step-variant {
+        /* background: var(--beige); */
+        background-image: url(../Images/main-bg.jpeg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 1px solid rgba(198, 166, 70, 0.15);
+        border-radius: 2px;
+        padding: 13px 16px;
+      }
+      .step-variant-qty {
+        font-family: "Playfair Display", serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--dark-brown);
+        margin-bottom: 4px;
+      }
+      .step-variant-detail {
+        font-size: 0.75rem;
+        color: var(--text-brown);
+        font-weight: 300;
+        line-height: 1.6;
+        opacity: 0.72;
+      }
+
+      /* Alert / Note callout */
+      .step-alert {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        background: rgba(198, 166, 70, 0.08);
+        border: 1px solid rgba(198, 166, 70, 0.2);
+        border-left: 3px solid var(--gold);
+        border-radius: 0 2px 2px 0;
+        padding: 12px 16px;
+        margin-top: 14px;
+        font-size: 0.78rem;
+        color: var(--text-brown);
+        font-weight: 400;
+        line-height: 1.6;
+      }
+      .step-alert strong {
+        color: var(--gold);
+        font-weight: 600;
+      }
+
+      /* Time chips */
+      .step-chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+      .step-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--cream);
+        border: 1px solid rgba(198, 166, 70, 0.18);
+        border-radius: 2px;
+        padding: 6px 14px;
+        font-size: 0.72rem;
+        color: var(--text-brown);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+      }
+      .step-chip strong {
+        color: var(--dark-brown);
+        font-weight: 600;
+      }
+
+      /* ══════════════════════════════════════════════════════
+   §4  CHEF'S TIP
+══════════════════════════════════════════════════════ */
+      .tip-block {
+        /* background: var(--beige); */
+        background-image: url(../Images/main-bg.jpeg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-left: 2px solid var(--gold);
+        border-radius: 0 2px 2px 0;
+        padding: 36px 44px;
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 0 28px;
+        align-items: flex-start;
+      }
+      .tip-icon-wrap {
+        width: 56px;
+        height: 56px;
+        background: var(--cream);
+        border: 1.5px solid rgba(198, 166, 70, 0.22);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+      .tip-content {
+      }
+      .tip-eyebrow {
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .tip-quote {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--dark-brown);
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .tip-body {
+        font-size: 0.83rem;
+        font-weight: 300;
+        color: var(--text-brown);
+        line-height: 1.9;
+        opacity: 0.85;
+      }
+      .tip-body strong {
+        display: block;
+        font-weight: 600;
+        color: var(--dark-brown);
+        font-size: 0.79rem;
+        letter-spacing: 0.04em;
+        margin-bottom: 4px;
+        margin-top: 16px;
+        opacity: 1;
+      }
+      .tip-body strong:first-child {
+        margin-top: 0;
+      }
+
+      /* ══════════════════════════════════════════════════════
+   §5  LIFESTYLE IMAGE
+══════════════════════════════════════════════════════ */
+      .lifestyle-wrap {
+        position: relative;
+        border-radius: 2px;
+        overflow: hidden;
+        box-shadow: 0 24px 72px rgba(43, 30, 22, 0.12);
+      }
+      .lifestyle-img-block {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: linear-gradient(
+          140deg,
+          var(--dark-brown) 0%,
+          var(--deep-brown) 50%,
+          #7a4e20 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .lifestyle-img-block::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 60% 35%,
+          rgba(198, 166, 70, 0.07) 0%,
+          transparent 65%
+        );
+      }
+      .lifestyle-bg-icon {
+        font-size: 8rem;
+        opacity: 0.06;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -54%);
+        filter: blur(3px);
+        pointer-events: none;
+      }
+      /* Swap note — remove in production */
+      .lifestyle-swap-note {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(43, 30, 22, 0.55);
+        color: rgba(245, 235, 221, 0.35);
+        font-size: 0.64rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        border-radius: 2px;
+        border: 1px dashed rgba(245, 235, 221, 0.12);
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .lifestyle-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(43, 30, 22, 0.72) 0%,
+          transparent 52%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 36px 44px;
+      }
+      .lifestyle-caption-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        font-style: italic;
+        font-weight: 300;
+        color: rgba(245, 235, 221, 0.88);
+        line-height: 1.45;
+        margin-bottom: 8px;
+      }
+      .lifestyle-caption-sub {
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(198, 166, 70, 0.65);
+      }
+
+      /* ══════════════════════════════════════════════════════
+   §6  PRODUCT SHOWCASE
+══════════════════════════════════════════════════════ */
+      .showcase-block {
+        background: var(--dark-brown);
+        border-radius: 2px;
+        padding: 72px 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .showcase-img-col {
+      }
+      .showcase-product-img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: var(--deep-brown);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .showcase-product-img::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 50% 18%,
+          rgba(198, 166, 70, 0.1) 0%,
+          transparent 60%
+        );
+      }
+      .showcase-product-emoji {
+        font-size: 7rem;
+        opacity: 0.1;
+        filter: blur(3px);
+      }
+      .showcase-steam-wrap {
+        position: absolute;
+        top: 7%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 18px;
+      }
+      .showcase-steam-wrap .steam-strand {
+        background: linear-gradient(
+          to top,
+          rgba(198, 166, 70, 0.22),
+          transparent
+        );
+      }
+      .showcase-round-badge {
+        position: absolute;
+        top: 22px;
+        right: -14px;
+        width: 70px;
+        height: 70px;
+        background: var(--gold);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dark-brown);
+        line-height: 1.5;
+        z-index: 2;
+      }
+
+      /* Showcase text column */
+      .showcase-text-col {
+      }
+      .showcase-text-col .section-eyebrow {
+        color: rgba(198, 166, 70, 0.6);
+      }
+      .showcase-text-col .section-title {
+        color: var(--cream);
+      }
+      .showcase-text-col .section-title em {
+        color: var(--gold);
+      }
+      .showcase-text-col .gold-line {
+        opacity: 0.35;
+      }
+
+      .showcase-desc {
+        font-size: 0.84rem;
+        font-weight: 300;
+        color: rgba(245, 235, 221, 0.48);
+        line-height: 1.9;
+        margin-bottom: 36px;
+        max-width: 340px;
+      }
+      .showcase-specs {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+      }
+      .spec-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 11px 0;
+        border-bottom: 1px solid rgba(198, 166, 70, 0.08);
+      }
+      .spec-row:last-child {
+        border-bottom: none;
+      }
+      .spec-label {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(245, 235, 221, 0.3);
+      }
+      .spec-value {
+        font-family: "Playfair Display", serif;
+        font-size: 0.92rem;
+        color: rgba(245, 235, 221, 0.72);
+      }
+
+      /* ── RESPONSIVE ─────────────────────────────────────── */
+      @media (max-width: 1024px) {
+        .recipe-hero {
+          padding: 60px 24px 0;
+        }
+        .recipe-hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .recipe-hero-text {
+          padding-bottom: 48px;
+        }
+        .recipe-hero-visual {
+          display: none;
+        }
+        .recipe-body {
+          padding: 0 24px;
+        }
+        .ing-card {
+          padding: 32px 28px;
+        }
+        .tip-block {
+          padding: 28px 32px;
+        }
+        .showcase-block {
+          grid-template-columns: 1fr;
+          gap: 48px;
+          padding: 52px 40px;
+        }
+        .showcase-product-img {
+          aspect-ratio: 4/3;
+        }
+        .showcase-round-badge {
+          display: none;
+        }
+      }
+      @media (max-width: 640px) {
+        .recipe-hero {
+          padding: 48px 20px 0;
+        }
+        .recipe-hero-stats {
+          gap: 24px;
+        }
+        .recipe-body {
+          padding: 0 20px;
+        }
+        .recipe-section {
+          padding: 60px 0;
+        }
+        .ing-card {
+          padding: 24px 20px;
+        }
+        .ing-item-circle {
+          width: 66px;
+          height: 66px;
+          font-size: 1.6rem;
+        }
+        .ing-item-name {
+          font-size: 0.62rem;
+          max-width: 60px;
+        }
+        .step-row {
+          grid-template-columns: 50px 1fr;
+          gap: 0 20px;
+        }
+        .step-badge {
+          width: 40px;
+          height: 40px;
+          font-size: 0.9rem;
+        }
+        .step-row:not(:last-child)::after {
+          left: 24px;
+        }
+        .step-variants {
+          grid-template-columns: 1fr;
+        }
+        .tip-block {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          padding: 24px 22px;
+        }
+        .tip-icon-wrap {
+          width: 46px;
+          height: 46px;
+          font-size: 1.25rem;
+        }
+        .lifestyle-overlay {
+          padding: 24px 28px;
+        }
+        .lifestyle-caption-text {
+          font-size: 1rem;
+        }
+        .showcase-block {
+          padding: 40px 24px;
+        }
+        .ing-plus {
+          padding: 0 4px;
+        }
+      }
+    </style>
+    <style>
+      /* ===== DESIGN TOKENS ===== */
+      :root {
+        --gold: #c9a84c;
+        --gold-light: #e8c97a;
+        --gold-deep: #9e7b2f;
+        --parch: #f7edd8;
+        --parch-2: #efe0c0;
+        --parch-3: #e8d5a8;
+        --ivory: #fbf5e6;
+        --ink: #3a2a10;
+        --ink-mid: #5c4020;
+        --ink-faint: #8a6a3a;
+        --sidebar-w: 220px;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "EB Garamond", serif;
+        background: var(--parch);
+        color: var(--ink);
+        display: flex;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      /* ===== SIDEBAR ===== */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: var(--sidebar-w);
+        height: 100vh;
+        /* background: linear-gradient(
+          180deg,
+          var(--parch-2) 0%,
+          var(--parch-3) 100%
+        ); */
+        border-right: 1px solid rgba(201, 168, 76, 0.35);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 0 24px;
+        z-index: 500;
+        overflow: hidden;
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background-image: url(../Images/nav-bg.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      }
+      .sidebar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -1px;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          var(--gold) 20%,
+          var(--gold) 80%,
+          transparent
+        );
+        opacity: 0.5;
+      }
+      .sidebar-deco {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0.07;
+        pointer-events: none;
+      }
+      .sidebar-deco-top {
+        top: 165px;
+      }
+      .sidebar-deco-bot {
+        bottom: 95px;
+      }
+      .sidebar-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 28px;
+        text-decoration: none;
+      }
+      .sidebar-logo img {
+            width: 124px;
+            height: 124px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 8px rgba(201, 168, 76, 0.3));
+      }
+      .sidebar-logo-name {
+        font-family: "Cinzel", serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--gold-deep);
+        letter-spacing: 0.22em;
+      }
+      .sidebar-logo-tag {
+        font-family: "EB Garamond", serif;
+        font-size: 0.6rem;
+        color: var(--ink-faint);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .sidebar-rule {
+        width: 55%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin-bottom: 24px;
+        opacity: 0.55;
+      }
+      .nav-list {
+        list-style: none;
+        width: 100%;
+        flex: 1;
+      }
+      .nav-list li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 26px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.67rem;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-mid);
+        text-decoration: none;
+        transition: all 0.3s;
+        position: relative;
+      }
+      .nav-list li a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.3s;
+      }
+      .nav-list li a:hover,
+      .nav-list li a.active {
+        color: var(--gold-deep);
+        padding-left: 34px;
+      }
+      .nav-list li a:hover::before,
+      .nav-list li a.active::before {
+        width: 18px;
+      }
+      .nav-icon {
+        width: 13px;
+        height: 13px;
+        opacity: 0.5;
+        flex-shrink: 0;
+      }
+      .sidebar-buy {
+        margin-top: auto;
+        width: calc(100% - 36px);
+      }
+      
+     
+    .sidebar-buy a {
+        display: block;
+        text-align: center;
+        background: linear-gradient(135deg,var(--gold),var(--gold));
+        color: var(--ivory);
+        padding: 11px 16px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.58rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 14px rgba(158, 123, 47, 0.22);
+        transition: all 0.3s;
+      }
+      .sidebar-buy a:hover {
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        color: var(--ink);
+        transform: translateY(-1px);
+      }
+      .sidebar-copy {
+        margin-top: 12px;
+        font-size: 0.56rem;
+        color: var(--ink-faint);
+        letter-spacing: 0.1em;
+        opacity: 0.55;
+        font-family: "Lato", sans-serif;
+      }
+      .hamburger {
+        display: none;
+        position: fixed;
+        top: 14px;
+        left: 14px;
+        z-index: 700;
+        background: var(--parch-2);
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        width: 40px;
+        height: 40px;
+        border-radius: 2px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+      .hamburger span {
+        display: block;
+        width: 19px;
+        height: 1.5px;
+        background: var(--gold-deep);
+        transition: all 0.3s;
+      }
+      /* PAGE WRAP */
+      .page-wrap {
+        margin-left: var(--sidebar-w);
+        flex: 1;
+        min-height: 100vh;
+      }
+      /* PAGE HERO */
+      .page-hero {
+        background: linear-gradient(
+          160deg,
+          var(--parch-3) 0%,
+          var(--parch-2) 100%
+        );
+        padding: 70px 56px 60px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 80% 50%,
+          rgba(201, 168, 76, 0.08) 0%,
+          transparent 65%
+        );
+      }
+      .page-hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        right: 10%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+      .page-hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 640px;
+      }
+      .page-hero-tag {
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+      }
+      .page-hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.6rem, 5vw, 4rem);
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1.1;
+      }
+      .page-hero-title em {
+        font-style: italic;
+        color: var(--gold-deep);
+      }
+      /* HELPERS */
+      .eyebrow {
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+      }
+      .sec-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+        font-weight: 500;
+        color: var(--ink);
+        line-height: 1.15;
+        margin-bottom: 20px;
+      }
+      .sec-title em {
+        font-style: italic;
+        color: var(--gold-deep);
+      }
+      .gold-rule {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+      .gold-rule-line {
+        height: 1px;
+        width: 48px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+      }
+      .gold-rule-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--gold);
+        border-radius: 50%;
+      }
+      /* BUTTONS */
+      .btn-gold {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+        color: var(--ivory);
+        padding: 13px 30px;
+        font-family: "Cinzel", serif;
+        font-size: 0.63rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        border-radius: 1px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 16px rgba(158, 123, 47, 0.22);
+      }
+      .btn-gold:hover {
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        color: var(--ink);
+        transform: translateY(-2px);
+      }
+      .btn-parch {
+        display: inline-block;
+        background: var(--ivory);
+        color: var(--gold-deep);
+        padding: 13px 32px;
+        font-family: "Cinzel", serif;
+        font-size: 0.63rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        border-radius: 1px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 18px rgba(58, 42, 16, 0.18);
+      }
+      .btn-parch:hover {
+        background: var(--ink);
+        color: var(--gold-light);
+        transform: translateY(-2px);
+      }
+      /* CTA BAND */
+      .cta-band {
+        background: linear-gradient(
+          135deg,
+          var(--gold-deep) 0%,
+          var(--gold) 55%,
+          var(--gold-light) 100%
+        );
+        text-align: center;
+        padding: 80px 56px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-band::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23FBF5E6' stroke-width='0.5' opacity='0.14'%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Cpath d='M30 20 Q35 25 30 30 Q25 25 30 20Z M30 40 Q35 35 30 30 Q25 35 30 40Z M20 30 Q25 35 30 30 Q25 25 20 30Z M40 30 Q35 35 30 30 Q35 25 40 30Z'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 60px 60px;
+      }
+      .cta-band .eyebrow {
+        color: rgba(251, 245, 230, 0.7);
+        position: relative;
+        z-index: 1;
+      }
+      .cta-band .sec-title {
+        color: var(--ivory);
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+      .cta-band .sec-title em {
+        color: var(--ink-mid);
+      }
+      .cta-sub {
+        font-family: "EB Garamond", serif;
+        font-size: 0.98rem;
+        color: rgba(251, 245, 230, 0.82);
+        max-width: 420px;
+        margin: 0 auto 36px;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+      }
+      /* FOOTER */
+      footer {
+        background: var(--ink);
+        padding: 60px 56px 32px;
+        position: relative;
+        overflow: hidden;
+      }
+      footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("../Products/footer-bg.png");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.07;
+      }
+      footer > * {
+        position: relative;
+        z-index: 1;
+      }
+      footer::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 8%;
+        right: 8%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.8fr 0.8fr 1.4fr;
+        gap: 44px;
+        margin-bottom: 48px;
+        padding-bottom: 44px;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+      }
+      .footer-logo {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        filter: sepia(1) saturate(1.5) brightness(1.2);
+      }
+      .footer-tag {
+        font-family: "EB Garamond", serif;
+        font-size: 0.8rem;
+        color: rgba(245, 230, 192, 0.45);
+        line-height: 1.9;
+        max-width: 220px;
+        margin-top: 10px;
+      }
+      .footer-socials {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .soc-icon {
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(201, 168, 76, 0.22);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .soc-icon:hover {
+        border-color: var(--gold);
+        background: rgba(201, 168, 76, 0.1);
+      }
+      .footer-col h5 {
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        font-weight: 500;
+        color: var(--gold-light);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .footer-links a {
+        font-family: "EB Garamond", serif;
+        font-size: 0.82rem;
+        color: rgba(245, 230, 192, 0.42);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .footer-links a:hover {
+        color: var(--gold-light);
+      }
+      .footer-contact-col h5 {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.62rem;
+        font-weight: 500;
+        color: var(--gold-light);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+      .footer-form-group {
+        margin-bottom: 9px;
+      }
+      .footer-form-group input,
+      .footer-form-group textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(201, 168, 76, 0.18);
+        border-radius: 1px;
+        padding: 9px 11px;
+        font-family: "EB Garamond", serif;
+        font-size: 0.84rem;
+        color: rgba(245, 230, 192, 0.78);
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      .footer-form-group input:focus,
+      .footer-form-group textarea:focus {
+        border-color: rgba(201, 168, 76, 0.42);
+      }
+      .footer-form-group textarea {
+        resize: none;
+        min-height: 68px;
+      }
+      .footer-form-group input::placeholder,
+      .footer-form-group textarea::placeholder {
+        color: rgba(245, 230, 192, 0.2);
+      }
+      .footer-phone-row {
+        display: flex;
+        gap: 8px;
+      }
+      .footer-cc {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(201, 168, 76, 0.18);
+        border-radius: 1px;
+        padding: 9px 7px;
+        font-family: "EB Garamond", serif;
+        font-size: 0.76rem;
+        color: rgba(245, 230, 192, 0.78);
+        outline: none;
+        width: 96px;
+        cursor: pointer;
+        appearance: none;
+      }
+      .footer-cc option {
+        background: #1a0f0a;
+      }
+      .footer-submit {
+        width: 100%;
+        background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+        color: var(--ivory);
+        padding: 10px;
+        border: none;
+        border-radius: 1px;
+        font-family: "Cinzel", serif;
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 6px;
+      }
+      .footer-submit:hover {
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        color: var(--ink);
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .footer-copy {
+        font-family: "EB Garamond", serif;
+        font-size: 0.73rem;
+        color: rgba(245, 230, 192, 0.22);
+      }
+      .footer-copy span {
+        color: var(--gold);
+        opacity: 0.6;
+      }
+      /* FADE */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(26px);
+      }
+      /* RESPONSIVE */
+      @media (max-width: 1100px) {
+        .sidebar {
+          transform: translateX(-220px);
+        }
+        .sidebar.open {
+          transform: translateX(0);
+        }
+        .page-wrap {
+          margin-left: 0;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .page-hero {
+          padding: 60px 24px 50px;
+        }
+        footer {
+          padding: 48px 24px 28px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-contact-col {
+          grid-column: 1/-1;
+        }
+        .cta-band {
+          padding: 64px 24px;
+        }
+      }
+      @media (max-width: 640px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <svg
+        class="sidebar-deco sidebar-deco-top"
+        width="76"
+        height="76"
+        viewBox="0 0 76 76"
+      >
+        <g fill="none" stroke="#C9A84C" stroke-width="1">
+          <circle cx="38" cy="38" r="26" />
+          <circle cx="38" cy="38" r="16" />
+          <path
+            d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z"
+          />
+        </g>
+      </svg>
+      <svg
+        class="sidebar-deco sidebar-deco-bot"
+        width="76"
+        height="76"
+        viewBox="0 0 76 76"
+      >
+        <g fill="none" stroke="#C9A84C" stroke-width="1">
+          <circle cx="38" cy="38" r="26" />
+          <circle cx="38" cy="38" r="8" />
+          <path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38" />
+          <circle cx="38" cy="38" r="3" />
+        </g>
+      </svg>
+      <a href="../index.html" class="sidebar-logo">
+        <img src="../logo.png" alt="RASA" />
+        <!-- <span class="sidebar-logo-name">RASA</span>
+    <span class="sidebar-logo-tag">Premium Spices &amp; Blends</span> -->
+      </a>
+      <div class="sidebar-rule"></div>
+      <ul class="nav-list">
+        <li>
+          <a href="../index.html">
+            <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> -->
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="../about.html">
+            <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> -->
+            About Us
+          </a>
+        </li>
+        <li>
+          <a href="../products.html">
+            <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg> -->
+            Products
+          </a>
+        </li>
+        <li>
+          <a href="./index.html" class="active">
+            <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg> -->
+            Recipes
+          </a>
+        </li>
+        <li>
+          <a href="../purchase.html">
+            <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> -->
+            Purchase
+          </a>
+        </li>
+        <li>
+          <a href="../contact.html">
+            <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> -->
+            Contact Us
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-buy">
+        <a href="https://blinkit.com" target="_blank">Buy on Blinkit</a>
+      </div>
+      <span class="sidebar-copy">© 2026 RASA</span>
+    </aside>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="page-wrap">
+      <!-- ════════════════════════════════════
+       NAVBAR — exact copy from your file
+  ════════════════════════════════════ -->
+
+      <!-- ════════════════════════════════════
+       §1  HERO  ← UPDATED CONTENT
+  ════════════════════════════════════ -->
+      <div class="recipe-hero">
+        <div class="recipe-hero-bg"></div>
+        <div class="recipe-hero-inner">
+          <div class="recipe-hero-text">
+            <div class="recipe-hero-tag fade-up">Signature Recipe</div>
+            <h1 class="recipe-hero-title fade-up d1">
+              RASA – Festive<br /><em>Roast Chicken</em>
+            </h1>
+            <p class="recipe-hero-desc fade-up d2">
+              Golden, aromatic, impossibly tender. A whole chicken slow-cooked
+              with the bold warmth of RASA — no babysitting required. Set it, go
+              relax, and come back to something magnificent.
+            </p>
+            <div class="recipe-hero-stats fade-up d3">
+              <div>
+                <span class="hero-stat-label">Prep Time</span>
+                <span class="hero-stat-value">10 min</span>
+              </div>
+              <div>
+                <span class="hero-stat-label">Cook Time</span>
+                <span class="hero-stat-value">40–55 min</span>
+              </div>
+              <div>
+                <span class="hero-stat-label">Serves</span>
+                <span class="hero-stat-value">4–6 people</span>
+              </div>
+              <div>
+                <span class="hero-stat-label">Difficulty</span>
+                <span class="hero-stat-value">Simple</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="recipe-hero-visual">
+            <div class="recipe-hero-card fade-up d2">
+              <div class="recipe-hero-card-top">
+                <div class="steam-wrap">
+                  <div class="steam-strand"></div>
+                  <div class="steam-strand"></div>
+                  <div class="steam-strand"></div>
+                </div>
+                <div class="recipe-hero-card-badge">RASA Blend</div>
+                <span class="recipe-hero-card-emoji"></span>
+              </div>
+              <div class="recipe-hero-card-body">
+                <div class="recipe-hero-card-eyebrow">Friyay</div>
+                <div class="recipe-hero-card-name">Festive Roast Chicken</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════
+       BODY ← UPDATED CONTENT
+  ════════════════════════════════════ -->
+      <div class="recipe-body">
+        <!-- §2  INGREDIENTS -->
+        <div class="recipe-section">
+          <div class="section-eyebrow fade-up">Ingredients</div>
+          <h2 class="section-title fade-up d1">What you will <em>need</em></h2>
+          <div class="gold-line fade-up d2"></div>
+
+          <div class="ing-card fade-up d2">
+            <div class="ing-group-label">Main Ingredients</div>
+            <div class="ing-row">
+              <div class="ing-item">
+                <div class="ing-item-circle">
+                  <img
+                    src="./Icons/chicken.jpg"
+                    alt=""
+                    height="50"
+                    width="50"
+                  />
+                </div>
+                <div class="ing-item-name">Whole Cleaned Chicken</div>
+              </div>
+              <span class="ing-plus">+</span>
+
+              <div class="ing-item">
+                <div class="ing-item-circle">
+                  <img
+                    src="./Icons/garlic.webp"
+                    alt=""
+                    height="50"
+                    width="50"
+                  />
+                </div>
+                <div class="ing-item-name">Ginger, Garlic Paste</div>
+              </div>
+              <span class="ing-plus">+</span>
+
+              <div class="ing-item">
+                <div class="ing-item-circle">
+                  <img src="./Icons/onion.jpg" alt="" height="50" width="50" />
+                </div>
+                <div class="ing-item-name">Peeled Halved Onions</div>
+              </div>
+              <span class="ing-plus">+</span>
+
+              <div class="ing-item">
+                <div class="ing-item-circle">
+                  <img
+                    src="./Icons/Peeled Halved Potatoes.jpg"
+                    alt=""
+                    height="50"
+                    width="50"
+                  />
+                </div>
+                <div class="ing-item-name">Peeled Halved Potatoes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- §3  STEPS -->
+        <div class="recipe-section">
+          <div class="section-eyebrow fade-up">The Method</div>
+          <h2 class="section-title fade-up d1">5 Simple <em>Steps</em></h2>
+          <div class="gold-line fade-up d2"></div>
+
+          <div class="steps-list">
+            <div class="step-row fade-up d1">
+              <div class="step-num-col"><div class="step-badge">1</div></div>
+              <div class="step-body">
+                <div class="step-body-title">Prepare the chicken</div>
+                <p class="step-body-text">
+                  Add washed chicken to a pot — use a
+                  <strong>whole chicken</strong> or pieces of your choice.
+                </p>
+              </div>
+            </div>
+
+            <div class="step-row fade-up d2">
+              <div class="step-num-col"><div class="step-badge">2</div></div>
+              <div class="step-body">
+                <div class="step-body-title">Poke &amp; open it up</div>
+                <p class="step-body-text">
+                  Gently <strong>poke the chicken all over with a fork</strong>.
+                  This allows the RASA spices to penetrate deep into the meat
+                  for maximum flavour.
+                </p>
+                <div class="step-alert">
+                  <strong>Note:&nbsp;</strong>Put the fork into the whole
+                  chicken cavity and turn with ease to reach all sides.
+                </div>
+              </div>
+            </div>
+
+            <div class="step-row fade-up d3">
+              <div class="step-num-col"><div class="step-badge">3</div></div>
+              <div class="step-body">
+                <div class="step-body-title">Rub in RASA &amp; salt</div>
+                <p class="step-body-text">
+                  Rub <strong>RASA Festive Roast Chicken powder</strong> and
+                  salt all over the chicken — inside and out — until every
+                  surface is evenly coated.
+                </p>
+                <div class="step-variants">
+                  <div class="step-variant">
+                    <div class="step-variant-qty">1 kg chicken</div>
+                    <div class="step-variant-detail">
+                      3 tbsp RASA + 1 tsp salt
+                    </div>
+                  </div>
+                  <div class="step-variant">
+                    <div class="step-variant-qty">500 g chicken</div>
+                    <div class="step-variant-detail">
+                      1.5 tbsp RASA + ½ tsp salt
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-row fade-up d4">
+              <div class="step-num-col"><div class="step-badge">4</div></div>
+              <div class="step-body">
+                <div class="step-body-title">Add the aromatics</div>
+                <p class="step-body-text">
+                  Add <strong>1 tbsp ginger-garlic paste</strong>,
+                  <strong>1 tbsp oil</strong>,
+                  <strong>peeled halved onions</strong>, and
+                  <strong>peeled halved potatoes</strong> to the pot alongside
+                  the chicken.
+                </p>
+              </div>
+            </div>
+
+            <div class="step-row fade-up d5">
+              <div class="step-num-col"><div class="step-badge">5</div></div>
+              <div class="step-body">
+                <div class="step-body-title">Cover, simmer &amp; relax</div>
+                <p class="step-body-text">
+                  <strong>Cover with a lid</strong> and simmer on low until the
+                  chicken is completely tender. Turn the whole chicken once at
+                  the halfway mark to evenly distribute cooking.
+                </p>
+                <p class="step-body-text">
+                  <strong>No babysitting — go relax.</strong> When oil rises in
+                  the pot, your aromatic roast chicken is ready.
+                </p>
+                <div class="step-chips">
+                  <span class="step-chip"
+                    >⏱ <strong>500g</strong> — approx. 40 mins</span
+                  >
+                  <span class="step-chip"
+                    >⏱ <strong>1 kg</strong> — approx. 55 mins</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- §4  CHEF'S TIP -->
+        <div class="recipe-section">
+          <div class="section-eyebrow fade-up">From the Kitchen</div>
+          <h2 class="section-title fade-up d1">Chef's <em>Tip</em></h2>
+          <div class="gold-line fade-up d1"></div>
+
+          <div class="tip-block fade-up d2">
+            <div class="tip-icon-wrap">👨‍🍳</div>
+            <div class="tip-content">
+              <div class="tip-eyebrow">Pro Tip</div>
+              <p class="tip-quote">
+                "When oil rises in the pot, your aromatic roast chicken is
+                ready."
+              </p>
+              <p class="tip-body">
+                The rising oil is your signal — it means all the moisture has
+                cooked off and the chicken is perfectly done, fragrant, and
+                beautifully golden. Resist lifting the lid too early; the sealed
+                steam is what keeps the chicken tender throughout. The potatoes
+                and onions will have soaked up all the RASA spice and become a
+                rich, flavourful side in themselves.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- §5  PRODUCT SHOWCASE -->
+        <!-- <div class="recipe-section" style="padding-bottom:0; border-bottom:none;">
+      <div class="section-eyebrow fade-up">The Blend</div>
+      <h2 class="section-title fade-up d1">What makes it <em>RASA</em></h2>
+      <div class="gold-line fade-up d1"></div>
+
+      <div class="showcase-block">
+        <div class="showcase-img-col fade-up">
+          <div class="showcase-product-img">
+            <div class="showcase-steam-wrap">
+              <div class="steam-strand"></div>
+              <div class="steam-strand"></div>
+              <div class="steam-strand"></div>
+            </div>
+            <span class="showcase-product-emoji">🍗</span>
+            <div class="showcase-round-badge">RASA<br>Spice<br>Blend</div>
+          </div>
+        </div>
+
+        <div class="showcase-text-col fade-up d2">
+          <div class="section-eyebrow">The Blend Behind the Dish</div>
+          <h2 class="section-title">Friyay —<br><em>Festive Roast Chicken</em></h2>
+          <div class="gold-line"></div>
+
+          <p class="showcase-desc">Bold, celebratory roast flavours crafted for the weekend table. Aromatic whole spices slow-ground to bring out maximum depth. No artificial colours, no preservatives — just pure, honest spice.</p>
+
+          <div class="showcase-specs">
+            <div class="spec-row">
+              <span class="spec-label">Net Weight</span>
+              <span class="spec-value">70g</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Type</span>
+              <span class="spec-value">Chicken Roast Masala</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Preservatives</span>
+              <span class="spec-value">None — 100% Natural</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Available At</span>
+              <span class="spec-value">Blinkit</span>
+            </div>
+          </div>
+
+          <a class="btn-primary" href="https://blinkit.com" target="_blank">Buy on Blinkit →</a>
+        </div>
+      </div>
+    </div> -->
+      </div>
+      <!-- /recipe-body -->
+
+      <!-- ════════════════════════════════════
+       FOOTER — exact copy from your file
+  ════════════════════════════════════ -->
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="footer-grid">
+          <div>
+            <img src="../logo.png" alt="RASA" class="footer-logo" />
+            <p class="footer-tag">
+              Authentic preservative-free spice blends rooted in Indian
+              tradition, crafted for modern kitchens.
+            </p>
+            <div class="footer-socials">
+              <a class="soc-icon" href="#">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#C9A84C"
+                  stroke-width="1.6"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+              </a>
+              <a class="soc-icon" href="#">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#C9A84C"
+                  stroke-width="1.6"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                  />
+                </svg>
+              </a>
+              <a class="soc-icon" href="#">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#C9A84C"
+                  stroke-width="1.6"
+                >
+                  <path d="M16 8a6 6 0 016 6v6" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                  <path d="M10 9v12M10 13a4 4 0 018 0" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h5>Explore</h5>
+            <ul class="footer-links">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../about.html">About Us</a></li>
+              <li><a href="../products.html">Products</a></li>
+              <li><a href="./index.html">Recipes</a></li>
+              <li><a href="../contact.html">Contact Us</a></li>
+              <li><a href="../purchase.html">Purchase</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <ul class="footer-links">
+              <li><a href="mailto:hello@rasa.in">hello@rasa.in</a></li>
+              <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+              <li><a>Mumbai, India</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact-col">
+            <h5>Get in Touch</h5>
+            <div class="footer-form-group">
+              <input type="text" placeholder="Your Name" />
+            </div>
+            <div class="footer-form-group footer-phone-row">
+              <select class="footer-cc">
+                <option>🇮🇳 +91</option>
+                <option>🇺🇸 +1</option>
+                <option>🇬🇧 +44</option>
+                <option>🇦🇺 +61</option>
+                <option>🇦🇪 +971</option>
+                <option>🇸🇬 +65</option>
+              </select>
+              <input
+                type="tel"
+                placeholder="Mobile Number"
+                style="flex: 1; width: auto"
+              />
+            </div>
+            <div class="footer-form-group">
+              <textarea placeholder="Your message..."></textarea>
+            </div>
+            <button
+              class="footer-submit"
+              onclick="this.textContent='Sent ✓';setTimeout(()=>this.textContent='Send Message',3000)"
+            >
+              Send Message
+            </button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copy">
+            © 2026 <span>RASA</span>. All rights reserved.
+          </p>
+          <p class="footer-copy">Flavor. Made Simple.</p>
+        </div>
+      </footer>
+
+      <script>
+        (function () {
+          const els = document.querySelectorAll(".fade-up");
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add("visible");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.1 }
+          );
+          els.forEach((el) => {
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+              el.classList.add("visible");
+            } else {
+              io.observe(el);
+            }
+          });
+        })();
+      </script>
+    </div>
+    <script>
+      const ham = document.getElementById("hamburger"),
+        sb = document.getElementById("sidebar");
+      ham.addEventListener("click", () => sb.classList.toggle("open"));
+      document.addEventListener("click", (e) => {
+        if (!sb.contains(e.target) && !ham.contains(e.target))
+          sb.classList.remove("open");
+      });
+      window.addEventListener("load", () => {
+        if (typeof gsap === "undefined") return;
+        gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll(".fade-up").forEach((el) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.82,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 88%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
