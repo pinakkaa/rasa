@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us — Old</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <link rel="stylesheet" href="./rasa.css">
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+        <style>
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 72px;
+                align-items: start;
+            }
+            .about-body p {
+                font-family: 'EB Garamond', serif;
+                font-size: 0.95rem;
+                color: var(--ink-faint);
+                line-height: 1.9;
+                margin-bottom: 18px;
+            }
+            .about-body p strong {
+                color: var(--ink-mid);
+                font-weight: 600;
+            }
+            .aside-card {
+                background: linear-gradient(135deg,var(--parch-2),var(--parch-3));
+                border: 1px solid rgba(201, 168, 76, 0.3);
+                border-left: 3px solid var(--gold);
+                padding: 40px;
+                border-radius: 2px;
+                margin-bottom: 22px;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s;
+            }
+            .aside-card:hover {
+                box-shadow: 0 8px 28px rgba(158, 123, 47, 0.12);
+                transform: translateY(-2px);
+            }
+            .aside-card-title {
+                font-family: "Playfair Display", serif;
+                font-size: 1.15rem;
+                font-style: italic;
+                color: var(--gold-deep);
+                margin-bottom: 10px;
+            }
+            .aside-card-body {
+                font-family: 'EB Garamond', serif;
+                font-size: 0.85rem;
+                color: var(--ink-faint);
+                line-height: 1.8;
+            }
+            .aside-card-gold {
+                background: linear-gradient(135deg,var(--gold-deep),var(--gold));
+                border-left: none;
+            }
+            .aside-card-gold .aside-card-title {
+                color: var(--ivory);
+            }
+            .aside-card-gold .aside-card-body {
+                color: rgba(251, 245, 230, 0.8);
+            }
+            .pillars-2col {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                margin-top: 52px;
+            }
+            .pillar-card {
+                background: linear-gradient(160deg,var(--ivory),var(--parch));
+                border: 1px solid rgba(201, 168, 76, 0.2);
+                border-bottom: 2px solid var(--gold);
+                padding: 44px 36px;
+                border-radius: 2px;
+                transition: all 0.3s;
+            }
+            .pillar-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 36px rgba(158, 123, 47, 0.12);
+            }
+            .pillar-num {
+                font-family: "Playfair Display", serif;
+                font-size: 3.5rem;
+                font-weight: 300;
+                color: rgba(201, 168, 76, 0.15);
+                line-height: 1;
+                margin-bottom: 12px;
+            }
+            .pillar-name {
+                font-family: "Playfair Display", serif;
+                font-size: 1.25rem;
+                font-weight: 500;
+                color: var(--ink);
+                margin-bottom: 10px;
+            }
+            .pillar-desc {
+                font-family: 'EB Garamond', serif;
+                font-size: 0.85rem;
+                color: var(--ink-faint);
+                line-height: 1.8;
+            }
+            @media(max-width:1100px) {
+                .about-grid,
+                .pillars-2col {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <aside class="sidebar" id="sidebar">
+            <svg class="sidebar-deco sidebar-deco-top" width="76" height="76" viewbox="0 0 76 76">
+                <g fill="none" stroke="#C9A84C" stroke-width="1"><circle cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="16"/><path d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z"/></g>
+            </svg>
+            <svg class="sidebar-deco sidebar-deco-bot" width="76" height="76" viewbox="0 0 76 76">
+                <g fill="none" stroke="#C9A84C" stroke-width="1"><circle cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="8"/><path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38"/><circle cx="38" cy="38" r="3"/></g>
+            </svg>
+
+            <a href="./index.html" class="sidebar-logo">
+                <img src="./logo.png" alt="RASA">
+                <span class="sidebar-logo-tag">Premium Spices &amp; Blends</span>
+            </a>
+            <div class="sidebar-rule"></div>
+            <ul class="nav-list">
+                <li>
+                    <a
+                        href="./index.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> -->
+                        Home</a>
+                </li>
+                <li>
+                    <a href="./about.html" class="active">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> -->
+                        About Us</a>
+                </li>
+                <li>
+                    <a href="./products.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg> -->
+                        Products</a>
+                </li>
+                <li>
+                    <a href="./recipes/">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg> -->
+                        Recipes</a>
+                </li>
+                <li>
+                    <a href="./purchase.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> -->
+                        Purchase</a>
+                </li>
+                <li>
+                    <a href="./contact.html">
+                        <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> -->
+                        Contact Us</a>
+                </li>
+            </ul>
+            <div class="sidebar-buy">
+                <a href="https://blinkit.com" target="_blank">Buy on Blinkit</a>
+            </div>
+            <span class="sidebar-copy">© 2026 RASA</span>
+        </aside>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <main class="page-wrap">
+            <div class="page-hero">
+                <div class="page-hero-inner">
+                    <div class="page-hero-tag">Our Story</div>
+                    <h1 class="page-hero-title">The
+                        <em>Essence</em>
+                        of RASA</h1>
+                </div>
+            </div>
+
+            <!-- STORY SECTION -->
+            <section style="background:var(--ivory);">
+                <div class="about-grid">
+                    <div class="about-body">
+                        <div class="eyebrow fade-up">Sanskrit · रस</div>
+                        <h2 class="sec-title fade-up">What Does
+                            <em>RASA</em>
+                            Mean?</h2>
+                        <div class="gold-rule fade-up">
+                            <div class="gold-rule-line"></div>
+                            <div class="gold-rule-dot"></div>
+                        </div>
+                        <p class="fade-up">
+                            <strong>RASA</strong>
+                            comes from Sanskrit — a word that carries the weight of centuries. It means essence, flavour, and experience. In classical Indian philosophy, Rasa speaks to the deepest emotional and sensory response that an experience can evoke.</p>
+                        <p class="fade-up">We chose this name with intention. Because we believe that food is more than sustenance — it is memory, culture, and connection. Every spice blend we create is an attempt to bottle that feeling.</p>
+                        <p class="fade-up">Rooted in the rich culinary traditions of India, our blends are made with the finest whole spices, ground and blended to recreate the authentic flavours of home-cooked meals. No shortcuts. No artificial additives. Just pure, honest spice.</p>
+                        <p class="fade-up">We started RASA because we noticed something missing in the market — a brand that respected both the heritage of Indian cooking and the reality of modern life. You deserve blends that make cooking feel joyful, not daunting.</p>
+                    </div>
+                    <div>
+                        <div class="aside-card fade-up" style="background-image: url(./Images/main-bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                            <div class="aside-card-title">"Essence, Flavour, Experience"</div>
+                            <div class="aside-card-body">The Sanskrit word Rasa encapsulates everything we stand for — a deep, authentic engagement with flavour that goes beyond just taste.</div>
+                        </div>
+                        <div class="aside-card aside-card-gold fade-up">
+                            <div class="aside-card-title">Our Promise</div>
+                            <div class="aside-card-body">Every RASA blend is: 100% natural, preservative-free, no artificial colours, ethically sourced, and crafted with care.</div>
+                        </div>
+                        <div class="aside-card fade-up" style="background-image: url(./Images/main-bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                            <div class="aside-card-title">Small Batch Crafted</div>
+                            <div class="aside-card-body">Produced in small batches to ensure freshness and quality in every packet — never mass-produced, always intentional.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PILLARS -->
+            <section style="background-image: url(./Images/main-bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover; text-align:center;border-top:1px solid rgba(201,168,76,0.2);">
+                <div class="eyebrow fade-up">What We Believe</div>
+                <h2 class="sec-title fade-up" style="text-align:center;">Our Four
+                    <em>Pillars</em>
+                </h2>
+                <div class="gold-rule fade-up" style="justify-content:center;">
+                    <div class="gold-rule-dot"></div>
+                    <div class="gold-rule-line" style="background:linear-gradient(90deg,var(--gold),transparent);"></div>
+                </div>
+                <div class="pillars-2col">
+                    <div class="pillar-card fade-up">
+                        <div class="pillar-num">01</div>
+                        <div class="pillar-name">Rooted in Tradition</div>
+                        <p class="pillar-desc">We honour timeless culinary heritage by crafting authentic, preservative-free spice blends with no artificial colors or additives. Produced in small batches to ensure freshness, our blends transform traditional, complex recipes into simple steps — so you can enjoy an authentic, home-cooked meal with the ones you love.</p>
+                    </div>
+                    <div class="pillar-card fade-up">
+                        <div class="pillar-num">02</div>
+                        <div class="pillar-name">Aromatic by Nature</div>
+                        <p class="pillar-desc">Our blends are thoughtfully crafted to create rich, layered aromas that fill your home with warmth and flavour. Because the magic of a great meal begins long before the first bite.</p>
+                    </div>
+                    <div class="pillar-card fade-up">
+                        <div class="pillar-num">03</div>
+                        <div class="pillar-name">Simply Made</div>
+                        <p class="pillar-desc">Cooking should feel effortless, not difficult. With clear, guided steps, RASA makes it simple — so truly, anyone can cook. Most people order food from out because they feel cooking is difficult. With RASA, we believe you CAN COOK.</p>
+                    </div>
+                    <div class="pillar-card fade-up">
+                        <div class="pillar-num">04</div>
+                        <div class="pillar-name">A Celebration of Togetherness</div>
+                        <p class="pillar-desc">Food has the power to bring people closer. Every RASA blend is created with one purpose — to spark joy at the table and create moments worth sharing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <div class="cta-band">
+                <div class="eyebrow fade-up">Experience RASA</div>
+                <h2 class="sec-title fade-up">Taste the
+                    <em>Difference</em>
+                </h2>
+                <p class="cta-sub fade-up">Discover our full range of authentic spice blends, available now on Blinkit.</p>
+                <a href="https://blinkit.com" target="_blank" class="btn-parch fade-up">Shop Now on Blinkit</a>
+            </div>
+
+            <footer>
+                <div class="footer-grid">
+                    <div>
+                        <img src="./logo.png" alt="RASA" class="footer-logo">
+                        <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted for modern kitchens.</p>
+                        <div class="footer-socials">
+                            <a class="soc-icon" href="#">
+                                <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+                            </a>
+                            <a class="soc-icon" href="#">
+                                <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                            </a>
+                            <a class="soc-icon" href="#">
+                                <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M16 8a6 6 0 016 6v6"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Explore</h5>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="./index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./about.html">About Us</a>
+                            </li>
+                            <li>
+                                <a href="./products.html">Products</a>
+                            </li>
+                            <li>
+                                <a href="./recipes/">Recipes</a>
+                            </li>
+                            <li>
+                                <a href="./contact.html">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="./purchase.html">Purchase</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Contact</h5>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="mailto:hello@rasa.in">hello@rasa.in</a>
+                            </li>
+                            <li>
+                                <a href="tel:+919876543210">+91 98765 43210</a>
+                            </li>
+                            <li>
+                                <a>Mumbai, India</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact-col">
+                        <h5>Get in Touch</h5>
+                        <div class="footer-form-group"><input type="text" placeholder="Your Name"></div>
+                        <div class="footer-form-group footer-phone-row">
+                            <select class="footer-cc">
+                                <option>🇮🇳 +91</option>
+                                <option>🇺🇸 +1</option>
+                                <option>🇬🇧 +44</option>
+                                <option>🇦🇺 +61</option>
+                                <option>🇦🇪 +971</option>
+                                <option>🇸🇬 +65</option>
+                            </select>
+                            <input type="tel" placeholder="Mobile Number" style="flex:1;width:auto;">
+                        </div>
+                        <div class="footer-form-group">
+                            <textarea placeholder="Your message..."></textarea>
+                        </div>
+                        <button class="footer-submit" onclick="this.textContent='Sent ✓';setTimeout(()=>this.textContent='Send Message',3000)">Send Message</button>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="footer-copy">© 2026
+                        <span>RASA</span>. All rights reserved.</p>
+                    <p class="footer-copy">Flavor. Made Simple.</p>
+                </div>
+            </footer>
+        </main>
+        <script>
+            const ham = document.getElementById('hamburger'),
+                sb = document.getElementById('sidebar');
+            ham.addEventListener('click', () => sb.classList.toggle('open'));
+            document.addEventListener('click', e => {
+                if (! sb.contains(e.target) && ! ham.contains(e.target)) 
+                    sb.classList.remove('open');
+                
+
+            });
+            window.addEventListener('load', () => {
+                if (typeof gsap === 'undefined') 
+                    return;
+                
+
+                gsap.registerPlugin(ScrollTrigger);
+                document.querySelectorAll('.fade-up').forEach(el => {
+                    gsap.fromTo(el, {
+                        opacity: 0,
+                        y: 28
+                    }, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.82,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 88%',
+                            toggleActions: 'play none none none'
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
