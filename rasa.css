@@ -831,3 +831,52 @@ footer::after {
     text-transform: uppercase;
     margin-bottom: 20px;
 }
+
+@media (min-width: 1920px) {
+    .pc-name{
+        font-size: 1.3rem;
+    }
+    .pc-desc{
+        font-size: 0.8rem;
+    }
+    .pc-wt{
+        font-size: 0.7rem;
+        opacity: 1;
+    }
+    .page-hero-tag{
+        font-size: 0.8rem;
+    }
+    .step-name{
+        font-size: 1.4rem;
+    }
+    .step-desc{
+        font-size: 1rem;
+    }
+    .steps-row{
+        max-width: 1280px;
+    }
+    .eyebrow{
+        font-size: 0.9rem;
+    }
+    .info-value a{
+        font-size: 1.2rem;
+    }
+    .info-value{
+        font-size: 1.2rem;
+    }
+    .sidebar-note p{
+        font-size: 1.2rem;
+    }
+    .form-group label{
+        font-size: 0.7rem;
+    }
+    .form-group{
+        margin-bottom: 1.5rem;
+    }
+    .nav-list li a{
+      font-size: 1.2rem;
+    }
+    .sidebar-logo-sub{
+      font-size: 0.7rem;
+    }
+}
