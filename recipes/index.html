@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Recipes — RASA</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-        <style>
-        /* ===== DESIGN TOKENS ===== */:root
-        {
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes — RASA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* ===== DESIGN TOKENS ===== */
+        :root {
             --gold: #C9A84C;
             --gold-light: #E8C97A;
             --gold-deep: #9E7B2F;
@@ -23,6 +26,7 @@
             --ink-faint: #8A6A3A;
             --sidebar-w: 220px;
         }
+
         *,
         *::before,
         *::after {
@@ -30,9 +34,11 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: 'EB Garamond', serif;
             background: var(--parch);
@@ -41,6 +47,7 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
+
         body::after {
             content: '';
             position: fixed;
@@ -70,6 +77,7 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
         .sidebar::before {
             content: '';
             position: absolute;
@@ -77,9 +85,10 @@
             right: -1px;
             width: 3px;
             height: 100%;
-            background: linear-gradient(180deg,transparent,var(--gold) 20%,var(--gold) 80%,transparent);
+            background: linear-gradient(180deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
             opacity: 0.5;
         }
+
         .sidebar-deco {
             position: absolute;
             left: 50%;
@@ -87,12 +96,15 @@
             opacity: 0.07;
             pointer-events: none;
         }
+
         .sidebar-deco-top {
             top: 165px;
         }
+
         .sidebar-deco-bot {
             bottom: 95px;
         }
+
         .sidebar-logo {
             display: flex;
             flex-direction: column;
@@ -101,12 +113,14 @@
             margin-bottom: 36px;
             text-decoration: none;
         }
+
         .sidebar-logo img {
             width: 124px;
             height: 124px;
             object-fit: contain;
-            filter:drop-shadow(0 2px 8px rgba(201, 168, 76, 0.3));
+            filter: drop-shadow(0 2px 8px rgba(201, 168, 76, 0.3));
         }
+
         .sidebar-logo-name {
             font-family: 'Cinzel', serif;
             font-size: 1.15rem;
@@ -114,6 +128,7 @@
             color: var(--gold-deep);
             letter-spacing: 0.22em;
         }
+
         .sidebar-logo-tag {
             font-family: 'EB Garamond', serif;
             font-size: 0.6rem;
@@ -121,18 +136,21 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
         }
+
         .sidebar-rule {
             width: 55%;
             height: 1px;
-            background: linear-gradient(90deg,transparent,var(--gold),transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
             margin-bottom: 28px;
             opacity: 0.55;
         }
+
         .nav-list {
             list-style: none;
             width: 100%;
             flex: 1;
         }
+
         .nav-list li a {
             display: flex;
             align-items: center;
@@ -148,6 +166,7 @@
             transition: all 0.3s;
             position: relative;
         }
+
         .nav-list li a::before {
             content: '';
             position: absolute;
@@ -159,48 +178,54 @@
             background: var(--gold);
             transition: width 0.3s;
         }
+
         .nav-list li a:hover,
         .nav-list li a.active {
             color: var(--gold-deep);
             padding-left: 34px;
         }
+
         .nav-list li a:hover::before,
         .nav-list li a.active::before {
             width: 18px;
         }
+
         .nav-icon {
             width: 13px;
             height: 13px;
             opacity: 0.5;
             flex-shrink: 0;
         }
+
         .sidebar-buy {
             margin-top: auto;
             width: calc(100% - 36px);
         }
-       
-     
-    .sidebar-buy a {
-        display: block;
-        text-align: center;
-        background: linear-gradient(135deg,var(--gold),var(--gold));
-        color: var(--ivory);
-        padding: 11px 16px;
-        font-family: "Poppins", sans-serif;
-        font-size: 0.58rem;
-        font-weight: 500;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: 8px;
-        box-shadow: 0 4px 14px rgba(158, 123, 47, 0.22);
-        transition: all 0.3s;
-      }
+
+
+        .sidebar-buy a {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, var(--gold), var(--gold));
+            color: var(--ivory);
+            padding: 11px 16px;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(158, 123, 47, 0.22);
+            transition: all 0.3s;
+        }
+
         .sidebar-buy a:hover {
-            background: linear-gradient(135deg,var(--gold),var(--gold-light));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--ink);
             transform: translateY(-1px);
         }
+
         .sidebar-copy {
             margin-top: 12px;
             font-size: 0.78rem;
@@ -209,6 +234,7 @@
             opacity: 0.55;
             font-family: 'Lato', sans-serif;
         }
+
         .hamburger {
             display: none;
             position: fixed;
@@ -226,6 +252,7 @@
             gap: 5px;
             cursor: pointer;
         }
+
         .hamburger span {
             display: block;
             width: 19px;
@@ -233,12 +260,14 @@
             background: var(--gold-deep);
             transition: all 0.3s;
         }
+
         /* PAGE WRAP */
         .page-wrap {
             margin-left: var(--sidebar-w);
             flex: 1;
             min-height: 100vh;
         }
+
         /* PAGE HERO */
         .page-hero {
             /* background: linear-gradient(160deg,var(--parch-3) 0%,var(--parch-2) 100%); */
@@ -251,12 +280,14 @@
             overflow: hidden;
             border-bottom: 1px solid rgba(201, 168, 76, 0.25);
         }
+
         .page-hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 80% 50%,rgba(201,168,76,0.08) 0%,transparent 65%);
+            background: radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 65%);
         }
+
         .page-hero::after {
             content: '';
             position: absolute;
@@ -264,13 +295,15 @@
             left: 10%;
             right: 10%;
             height: 1px;
-            background: linear-gradient(90deg,transparent,var(--gold),transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
+
         .page-hero-inner {
             position: relative;
             z-index: 2;
             max-width: 640px;
         }
+
         .page-hero-tag {
             font-family: 'Cinzel', serif;
             font-size: 0.62rem;
@@ -279,6 +312,7 @@
             color: var(--gold);
             margin-bottom: 14px;
         }
+
         .page-hero-title {
             font-family: "Playfair Display", serif;
             font-size: clamp(2.6rem, 5vw, 4rem);
@@ -286,10 +320,12 @@
             color: var(--ink);
             line-height: 1.1;
         }
+
         .page-hero-title em {
             font-style: italic;
             color: var(--gold-deep);
         }
+
         /* HELPERS */
         .eyebrow {
             font-family: 'Cinzel', serif;
@@ -299,6 +335,7 @@
             color: var(--gold);
             margin-bottom: 14px;
         }
+
         .sec-title {
             font-family: "Playfair Display", serif;
             font-size: clamp(2.1rem, 3.8vw, 3.1rem);
@@ -307,31 +344,36 @@
             line-height: 1.15;
             margin-bottom: 20px;
         }
+
         .sec-title em {
             font-style: italic;
             color: var(--gold-deep);
         }
+
         .gold-rule {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 28px;
         }
+
         .gold-rule-line {
             height: 1px;
             width: 48px;
-            background: linear-gradient(90deg,var(--gold),transparent);
+            background: linear-gradient(90deg, var(--gold), transparent);
         }
+
         .gold-rule-dot {
             width: 4px;
             height: 4px;
             background: var(--gold);
             border-radius: 50%;
         }
+
         /* BUTTONS */
         .btn-gold {
             display: inline-block;
-            background: linear-gradient(135deg,var(--gold-deep),var(--gold));
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold));
             color: var(--ivory);
             padding: 13px 30px;
             font-family: 'Cinzel', serif;
@@ -346,11 +388,13 @@
             transition: all 0.3s;
             box-shadow: 0 4px 16px rgba(158, 123, 47, 0.22);
         }
+
         .btn-gold:hover {
-            background: linear-gradient(135deg,var(--gold),var(--gold-light));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--ink);
             transform: translateY(-2px);
         }
+
         .btn-parch {
             display: inline-block;
             background: var(--ivory);
@@ -367,19 +411,22 @@
             transition: all 0.3s;
             box-shadow: 0 4px 18px rgba(58, 42, 16, 0.18);
         }
+
         .btn-parch:hover {
             background: var(--ink);
             color: var(--gold-light);
             transform: translateY(-2px);
         }
+
         /* CTA BAND */
         .cta-band {
-            background: linear-gradient(135deg,var(--gold-deep) 0%,var(--gold) 55%,var(--gold-light) 100%);
+            background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 55%, var(--gold-light) 100%);
             text-align: center;
             padding: 80px 56px;
             position: relative;
             overflow: hidden;
         }
+
         .cta-band::before {
             content: '';
             position: absolute;
@@ -387,20 +434,24 @@
             background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23FBF5E6' stroke-width='0.5' opacity='0.14'%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Cpath d='M30 20 Q35 25 30 30 Q25 25 30 20Z M30 40 Q35 35 30 30 Q25 35 30 40Z M20 30 Q25 35 30 30 Q25 25 20 30Z M40 30 Q35 35 30 30 Q35 25 40 30Z'/%3E%3C/g%3E%3C/svg%3E");
             background-size: 60px 60px;
         }
+
         .cta-band .eyebrow {
             color: rgba(251, 245, 230, 0.7);
             position: relative;
             z-index: 1;
         }
+
         .cta-band .sec-title {
             color: var(--ivory);
             position: relative;
             z-index: 1;
             text-align: center;
         }
+
         .cta-band .sec-title em {
             color: var(--ink-mid);
         }
+
         .cta-sub {
             font-family: 'EB Garamond', serif;
             font-size: 0.98rem;
@@ -411,6 +462,7 @@
             position: relative;
             z-index: 1;
         }
+
         /* FOOTER */
         footer {
             background: var(--ink);
@@ -418,6 +470,7 @@
             position: relative;
             overflow: hidden;
         }
+
         footer::before {
             content: '';
             position: absolute;
@@ -427,10 +480,12 @@
             background-position: center;
             opacity: 0.07;
         }
-        footer > * {
+
+        footer>* {
             position: relative;
             z-index: 1;
         }
+
         footer::after {
             content: '';
             position: absolute;
@@ -438,8 +493,9 @@
             left: 8%;
             right: 8%;
             height: 1px;
-            background: linear-gradient(90deg,transparent,var(--gold),transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
+
         .footer-grid {
             display: grid;
             grid-template-columns: 1.3fr 0.8fr 0.8fr 1.4fr;
@@ -448,12 +504,14 @@
             padding-bottom: 44px;
             border-bottom: 1px solid rgba(201, 168, 76, 0.1);
         }
+
         .footer-logo {
             width: 64px;
             height: 64px;
             object-fit: contain;
-            filter:sepia(1) saturate(1.5) brightness(1.2);
+            filter: sepia(1) saturate(1.5) brightness(1.2);
         }
+
         .footer-tag {
             font-family: 'EB Garamond', serif;
             font-size: 0.8rem;
@@ -462,11 +520,13 @@
             max-width: 220px;
             margin-top: 10px;
         }
+
         .footer-socials {
             display: flex;
             gap: 10px;
             margin-top: 16px;
         }
+
         .soc-icon {
             width: 32px;
             height: 32px;
@@ -478,10 +538,12 @@
             text-decoration: none;
             transition: all 0.3s;
         }
+
         .soc-icon:hover {
             border-color: var(--gold);
             background: rgba(201, 168, 76, 0.1);
         }
+
         .footer-col h5 {
             font-family: 'Cinzel', serif;
             font-size: 0.62rem;
@@ -491,12 +553,14 @@
             text-transform: uppercase;
             margin-bottom: 18px;
         }
+
         .footer-links {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 9px;
         }
+
         .footer-links a {
             font-family: 'EB Garamond', serif;
             font-size: 0.82rem;
@@ -504,9 +568,11 @@
             text-decoration: none;
             transition: color 0.3s;
         }
+
         .footer-links a:hover {
             color: var(--gold-light);
         }
+
         .footer-contact-col h5 {
             font-family: 'Cinzel', serif;
             font-size: 0.62rem;
@@ -516,9 +582,11 @@
             text-transform: uppercase;
             margin-bottom: 18px;
         }
+
         .footer-form-group {
             margin-bottom: 9px;
         }
+
         .footer-form-group input,
         .footer-form-group textarea {
             width: 100%;
@@ -532,22 +600,27 @@
             outline: none;
             transition: border-color 0.3s;
         }
+
         .footer-form-group input:focus,
         .footer-form-group textarea:focus {
             border-color: rgba(201, 168, 76, 0.42);
         }
+
         .footer-form-group textarea {
             resize: none;
             min-height: 68px;
         }
+
         .footer-form-group input::placeholder,
         .footer-form-group textarea::placeholder {
             color: rgba(245, 230, 192, 0.2);
         }
+
         .footer-phone-row {
             display: flex;
             gap: 8px;
         }
+
         .footer-cc {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(201, 168, 76, 0.18);
@@ -561,12 +634,14 @@
             cursor: pointer;
             appearance: none;
         }
+
         .footer-cc option {
             background: #1a0f0a;
         }
+
         .footer-submit {
             width: 100%;
-            background: linear-gradient(135deg,var(--gold-deep),var(--gold));
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold));
             color: var(--ivory);
             padding: 10px;
             border: none;
@@ -580,10 +655,12 @@
             transition: all 0.3s;
             margin-top: 6px;
         }
+
         .footer-submit:hover {
-            background: linear-gradient(135deg,var(--gold),var(--gold-light));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             color: var(--ink);
         }
+
         .footer-bottom {
             display: flex;
             justify-content: space-between;
@@ -591,50 +668,63 @@
             flex-wrap: wrap;
             gap: 6px;
         }
+
         .footer-copy {
             font-family: 'EB Garamond', serif;
             font-size: 0.73rem;
             color: rgba(245, 230, 192, 0.22);
         }
+
         .footer-copy span {
             color: var(--gold);
             opacity: 0.6;
         }
+
         /* FADE */
         .fade-up {
             opacity: 0;
             transform: translateY(26px);
         }
+
         /* RESPONSIVE */
         @media(max-width:1100px) {
             .sidebar {
                 transform: translateX(-220px);
             }
+
             .sidebar.open {
                 transform: translateX(0);
             }
+
             .page-wrap {
                 margin-left: 0;
             }
+
             .hamburger {
                 display: flex;
             }
+
             .page-hero {
                 padding: 60px 24px 50px;
             }
+
             footer {
                 padding: 48px 24px 28px;
             }
+
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
             .footer-contact-col {
                 grid-column: 1/-1;
             }
+
             .cta-band {
                 padding: 64px 24px;
             }
         }
+
         @media(max-width:640px) {
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -648,6 +738,7 @@
             gap: 22px;
             margin-top: 48px;
         }
+
         .rc {
             display: block;
             text-decoration: none;
@@ -657,30 +748,36 @@
             background: var(--parch);
             transition: all 0.4s;
         }
+
         .rc:hover {
             transform: translateY(-5px);
             box-shadow: 0 14px 40px rgba(158, 123, 47, 0.13);
             border-color: rgba(201, 168, 76, 0.42);
         }
+
         .rc-img {
             height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
-            filter:sepia(0.18) saturate(0.9);
+            filter: sepia(0.18) saturate(0.9);
             transition: filter 0.4s;
         }
+
         .rc:hover .rc-img {
-            filter:sepia(0.05) saturate(1.1);
+            filter: sepia(0.05) saturate(1.1);
         }
+
         .rc-img-ov {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom,transparent 50%,rgba(58,42,16,0.5) 100%);
+            background: linear-gradient(to bottom, transparent 50%, rgba(58, 42, 16, 0.5) 100%);
         }
+
         .rc-body {
             padding: 22px 24px 26px;
         }
+
         .rc-blend {
             font-family: 'Cinzel', serif;
             font-size: 0.52rem;
@@ -689,6 +786,7 @@
             text-transform: uppercase;
             margin-bottom: 6px;
         }
+
         .rc-title {
             font-family: "Playfair Display", serif;
             font-size: 1.2rem;
@@ -697,11 +795,13 @@
             margin-bottom: 9px;
             line-height: 1.3;
         }
+
         .rc-meta {
             display: flex;
             gap: 14px;
             margin-bottom: 12px;
         }
+
         .rc-meta span {
             font-family: 'Cinzel', serif;
             font-size: 0.52rem;
@@ -709,6 +809,7 @@
             color: var(--ink-faint);
             opacity: 0.85;
         }
+
         .rc-desc {
             font-family: 'EB Garamond', serif;
             font-size: 0.85rem;
@@ -716,6 +817,7 @@
             line-height: 1.7;
             margin-bottom: 14px;
         }
+
         .rc-link {
             font-family: 'Cinzel', serif;
             font-size: 0.55rem;
@@ -727,59 +829,81 @@
             padding-bottom: 2px;
             transition: all 0.3s;
         }
+
         .rc-link:hover {
             color: var(--gold);
             border-color: var(--gold);
         }
+
         @media(max-width:1100px) {
             .recipes-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
         @media(max-width:640px) {
             .recipes-grid {
                 grid-template-columns: 1fr;
             }
         }
+
         @media (min-width: 1920px) {
-            .page-hero-tag{
+            .page-hero-tag {
                 font-size: 0.9rem;
             }
-            .eyebrow{
+
+            .eyebrow {
                 font-size: 0.9rem;
             }
-            .sec-title{
+
+            .sec-title {
                 font-size: 3.5rem;
             }
-            .rc-meta span{
+
+            .rc-meta span {
                 font-size: 0.8rem;
             }
-            .rc-desc{
+
+            .rc-desc {
                 font-size: 1rem;
             }
-            .rc-title{
+
+            .rc-title {
                 font-size: 1.5rem;
             }
-            .rc-link{
+
+            .rc-link {
                 font-size: 0.8rem;
                 padding-top: 1rem;
             }
-            .rc-img{
+
+            .rc-img {
                 height: 250px;
             }
         }
     </style>
 </head>
+
 <body>
     <aside class="sidebar" id="sidebar">
         <svg class="sidebar-deco sidebar-deco-top" width="76" height="76" viewbox="0 0 76 76">
-            <g fill="none" stroke="#C9A84C" stroke-width="1"><circle cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="16"/><path d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z"/></g>
+            <g fill="none" stroke="#C9A84C" stroke-width="1">
+                <circle cx="38" cy="38" r="26" />
+                <circle cx="38" cy="38" r="16" />
+                <path
+                    d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z" />
+            </g>
         </svg>
         <svg class="sidebar-deco sidebar-deco-bot" width="76" height="76" viewbox="0 0 76 76">
-            <g fill="none" stroke="#C9A84C" stroke-width="1"><circle cx="38" cy="38" r="26"/><circle cx="38" cy="38" r="8"/><path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38"/><circle cx="38" cy="38" r="3"/></g>
+            <g fill="none" stroke="#C9A84C" stroke-width="1">
+                <circle cx="38" cy="38" r="26" />
+                <circle cx="38" cy="38" r="8" />
+                <path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38" />
+                <circle cx="38" cy="38" r="3" />
+            </g>
         </svg>
         <a href="../index.html" class="sidebar-logo">
-            <img src="../logo.png" alt="RASA">
+            <img src="../Images/logo.png" alt="RASA">
             <span class="sidebar-logo-tag">Premium Spices &amp; Blends</span>
         </a>
         <div class="sidebar-rule"></div>
@@ -788,37 +912,37 @@
                 <a href="../index.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> -->
                     Home
-                  </a>
+                </a>
             </li>
             <li>
                 <a href="../about.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> -->
                     About Us
-                  </a>
+                </a>
             </li>
             <li>
                 <a href="../products.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg> -->
                     Products
-                  </a>
+                </a>
             </li>
             <li>
                 <a href="./index.html" class="active">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg> -->
                     Recipes
-                  </a>
+                </a>
             </li>
             <li>
                 <a href="../purchase.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> -->
                     Purchase
-                  </a>
+                </a>
             </li>
             <li>
                 <a href="../contact.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> -->
                     Contact Us
-                  </a>
+                </a>
             </li>
         </ul>
         <div class="sidebar-buy">
@@ -850,7 +974,10 @@
                 <div class="gold-rule-line"></div>
                 <div class="gold-rule-dot"></div>
             </div>
-            <p class="fade-up" style="font-family:'EB Garamond',serif;font-size:0.98rem;color:var(--ink-faint);max-width:540px;line-height:1.85;margin-bottom:0;">Every recipe is crafted to guide you through the cooking process with simplicity and confidence — using your RASA blend as the flavour foundation.</p>
+            <p class="fade-up"
+                style="font-family:'EB Garamond',serif;font-size:0.98rem;color:var(--ink-faint);max-width:540px;line-height:1.85;margin-bottom:0;">
+                Every recipe is crafted to guide you through the cooking process with simplicity and confidence — using
+                your RASA blend as the flavour foundation.</p>
 
             <div class="recipes-grid">
                 <a href="Rustic-Spice-Chicken-Curry.html" class="rc fade-up">
@@ -866,7 +993,8 @@
                             <span>👥 4 Serves</span>
                             <span>320 kcal</span>
                         </div>
-                        <p class="rc-desc">A timeless weeknight classic. Rich, warming, and full of authentic Indian flavour.</p>
+                        <p class="rc-desc">A timeless weeknight classic. Rich, warming, and full of authentic Indian
+                            flavour.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -883,7 +1011,8 @@
                             <span>👥 4 Serves</span>
                             <span>410 kcal</span>
                         </div>
-                        <p class="rc-desc">The Mangalorean classic that belongs on every food lover's table. Tangy, buttery, unforgettable.</p>
+                        <p class="rc-desc">The Mangalorean classic that belongs on every food lover's table. Tangy,
+                            buttery, unforgettable.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -900,7 +1029,8 @@
                             <span>👥 6 Serves</span>
                             <span>520 kcal</span>
                         </div>
-                        <p class="rc-desc">Fragrant rice layered with perfectly spiced chicken. Worthy of any celebration.</p>
+                        <p class="rc-desc">Fragrant rice layered with perfectly spiced chicken. Worthy of any
+                            celebration.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -917,7 +1047,8 @@
                             <span>👥 2 Serves</span>
                             <span>280 kcal</span>
                         </div>
-                        <p class="rc-desc">Delicate fish kissed with coastal spices. Light, healthy, and extraordinary in flavour.</p>
+                        <p class="rc-desc">Delicate fish kissed with coastal spices. Light, healthy, and extraordinary
+                            in flavour.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -934,14 +1065,20 @@
                             <span>👥 4 Serves</span>
                             <span>380 kcal</span>
                         </div>
-                        <p class="rc-desc">The ideal Sunday showstopper. Bold roast flavours that make the whole family come to the table.</p>
+                        <p class="rc-desc">The ideal Sunday showstopper. Bold roast flavours that make the whole family
+                            come to the table.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
-                <div class="rc fade-up" style="display:flex;align-items:center;justify-content:center;min-height:280px;background-image: url(../Images/main-bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                <div class="rc fade-up"
+                    style="display:flex;align-items:center;justify-content:center;min-height:280px;background-image: url(../Images/main-bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
                     <div style="text-align:center;padding:32px;">
-                        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;color:var(--gold-deep);margin-bottom:10px;">More Coming Soon</div>
-                        <p style="font-family:'EB Garamond',serif;font-size:1rem;color:var(--ink-faint);margin-bottom:22px;line-height:1.7;">New seasonal recipes crafted by our kitchen team.</p>
+                        <div
+                            style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;color:var(--gold-deep);margin-bottom:10px;">
+                            More Coming Soon</div>
+                        <p
+                            style="font-family:'EB Garamond',serif;font-size:1rem;color:var(--ink-faint);margin-bottom:22px;line-height:1.7;">
+                            New seasonal recipes crafted by our kitchen team.</p>
                         <a href="../products.html" class="btn-gold" style="font-size:0.55rem;">Explore Products →</a>
                     </div>
                 </div>
@@ -952,7 +1089,8 @@
             <div class="eyebrow fade-up">Start Cooking</div>
             <h2 class="sec-title fade-up">
                 <em>Anyone</em>
-                Can Cook with RASA</h2>
+                Can Cook with RASA
+            </h2>
             <p class="cta-sub fade-up">Pick a recipe, grab your blend, and make something extraordinary tonight.</p>
             <a href="https://blinkit.com" target="_blank" class="btn-parch fade-up">Shop Now on Blinkit</a>
         </div>
@@ -960,17 +1098,32 @@
         <footer>
             <div class="footer-grid">
                 <div>
-                    <img src="../logo.png" alt="RASA" class="footer-logo">
-                    <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted for modern kitchens.</p>
+                    <img src="../Images/logo.png" alt="RASA" class="footer-logo">
+                    <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted
+                        for modern kitchens.</p>
                     <div class="footer-socials">
                         <a class="soc-icon" href="#">
-                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C"
+                                stroke-width="1.6">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="1" />
+                            </svg>
                         </a>
                         <a class="soc-icon" href="#">
-                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C"
+                                stroke-width="1.6">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
                         </a>
                         <a class="soc-icon" href="#">
-                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M16 8a6 6 0 016 6v6"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0"/></svg>
+                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C"
+                                stroke-width="1.6">
+                                <path d="M16 8a6 6 0 016 6v6" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                                <path d="M10 9v12M10 13a4 4 0 018 0" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1013,27 +1166,38 @@
                 </div>
                 <div class="footer-contact-col">
                     <h5>Get in Touch</h5>
-                    <div class="footer-form-group"><input type="text" placeholder="Your Name"></div>
-                    <div class="footer-form-group footer-phone-row">
-                        <select class="footer-cc">
-                            <option>🇮🇳 +91</option>
-                            <option>🇺🇸 +1</option>
-                            <option>🇬🇧 +44</option>
-                            <option>🇦🇺 +61</option>
-                            <option>🇦🇪 +971</option>
-                            <option>🇸🇬 +65</option>
-                        </select>
-                        <input type="tel" placeholder="Mobile Number" style="flex:1;width:auto;">
-                    </div>
-                    <div class="footer-form-group">
-                        <textarea placeholder="Your message..."></textarea>
-                    </div>
-                    <button class="footer-submit" onclick="this.textContent='Sent ✓';setTimeout(()=>this.textContent='Send Message',3000)">Send Message</button>
+
+                    <form id="rasaFooterForm">
+                        <div class="footer-form-group">
+                            <input id="footer-name" type="text" placeholder="Your Name" />
+                        </div>
+                        <div class="footer-form-group footer-phone-row">
+                            <select id="footer-cc" class="footer-cc">
+                                <option value="+91">🇮🇳 +91</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+61">🇦🇺 +61</option>
+                                <option value="+971">🇦🇪 +971</option>
+                                <option value="+65">🇸🇬 +65</option>
+                            </select>
+                            <input id="footer-mobile" type="tel" placeholder="Mobile Number" style="flex: 1" />
+                        </div>
+                        <div class="footer-form-group">
+                            <textarea id="footer-message" placeholder="Your message..."></textarea>
+                        </div>
+                        <button id="footerSubmitBtn" class="footer-submit">Send Message</button>
+
+                        <p id="footerSuccess" style="display:none; color:green; margin-top:10px; font-weight:600;">✅
+                            Message sent successfully!</p>
+                        <p id="footerError" style="display:none; color:red; margin-top:10px; font-weight:600;">❌
+                            Something went wrong. Please try again.</p>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p class="footer-copy">© 2026
-                    <span>RASA</span>. All rights reserved.</p>
+                    <span>RASA</span>. All rights reserved.
+                </p>
                 <p class="footer-copy">Flavor. Made Simple.</p>
             </div>
         </footer>
@@ -1043,14 +1207,14 @@
             sb = document.getElementById('sidebar');
         ham.addEventListener('click', () => sb.classList.toggle('open'));
         document.addEventListener('click', e => {
-            if (! sb.contains(e.target) && ! ham.contains(e.target)) 
+            if (!sb.contains(e.target) && !ham.contains(e.target))
                 sb.classList.remove('open');
-            
+
         });
         window.addEventListener('load', () => {
-            if (typeof gsap === 'undefined') 
+            if (typeof gsap === 'undefined')
                 return;
-            
+
             gsap.registerPlugin(ScrollTrigger);
             document.querySelectorAll('.fade-up').forEach(el => {
                 gsap.fromTo(el, {
@@ -1070,4 +1234,7 @@
             });
         });
     </script>
-</body></html>
+    <script src="../email.js"></script>
+</body>
+
+</html>

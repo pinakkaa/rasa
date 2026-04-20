@@ -1,638 +1,861 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact Us — RASA</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-        <link rel="stylesheet" href="./rasa.css">
-        <style>
-            /* ── Contact Layout ────────────────────────────────────────────── */
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — RASA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="./rasa.css">
+    <style>
+        /* ── Contact Layout ────────────────────────────────────────────── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .info-label {
+            font-family: "Poppins", sans-serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-family: "Playfair Display", serif;
+            font-size: 0.9rem;
+            color: var(--ink-faint);
+            line-height: 1.6;
+        }
+
+        .info-value a {
+            color: var(--ink-faint);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-value a:hover {
+            color: var(--gold-deep);
+        }
+
+        /* ── Sidebar Note ──────────────────────────────────────────────── */
+        .sidebar-note {
+            margin-top: 32px;
+            padding: 30px 28px;
+            background-image: url(./Images/main-bg.jpeg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-left: 3px solid var(--gold);
+            border-radius: 2px;
+        }
+
+        .sidebar-note p {
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--ink-mid);
+            line-height: 1.8;
+        }
+
+        /* ── Form Card ─────────────────────────────────────────────────── */
+        .form-wrap {
+            background-image: url(./Images/main-bg.jpeg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            padding: 44px;
+            border-radius: 20px;
+        }
+
+        .form-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            background: var(--ivory);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 1px;
+            padding: 10px 12px;
+            font-family: "Playfair Display", serif;
+            font-size: 0.9rem;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: rgba(201, 168, 76, 0.55);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+        }
+
+        /* Validation states */
+        .form-group input.field-error,
+        .form-group textarea.field-error,
+        .form-group select.field-error {
+            border-color: rgba(200, 80, 60, 0.6);
+            box-shadow: 0 0 0 3px rgba(200, 80, 60, 0.08);
+        }
+
+        .field-error-msg {
+            display: none;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.1em;
+            color: #c84040;
+            margin-top: 4px;
+        }
+
+        .form-group input.field-error~.field-error-msg,
+        .form-group textarea.field-error~.field-error-msg,
+        .form-group select.field-error~.field-error-msg {
+            display: block;
+        }
+
+        .form-group textarea {
+            resize: none;
+            min-height: 130px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(58, 42, 16, 0.3);
+        }
+
+        .phone-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .phone-row .form-group:first-child {
+            flex: 0 0 140px;
+        }
+
+        .phone-row .form-group:last-child {
+            flex: 1;
+        }
+
+        /* ── Toast Notification ────────────────────────────────────────── */
+        .rasa-toast {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 9999;
+            min-width: 280px;
+            max-width: 380px;
+            padding: 18px 22px 18px 18px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+            transform: translateY(80px);
+            opacity: 0;
+            transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.42s ease;
+            pointer-events: none;
+        }
+
+        .rasa-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .rasa-toast.success {
+            background: linear-gradient(135deg, #1e2d1e, #2a3d22);
+            border: 1px solid rgba(100, 200, 100, 0.3);
+            border-left: 4px solid #6bc97a;
+        }
+
+        .rasa-toast.error {
+            background: linear-gradient(135deg, #2d1e1e, #3d2222);
+            border: 1px solid rgba(200, 80, 80, 0.3);
+            border-left: 4px solid #c84040;
+        }
+
+        .rasa-toast.loading {
+            background: linear-gradient(135deg, #2a2016, #3a2e10);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-left: 4px solid var(--gold);
+        }
+
+        .toast-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .toast-body {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-family: "Poppins", sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 3px;
+        }
+
+        .toast-msg {
+            font-family: "Playfair Display", serif;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.5;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1rem;
+            line-height: 1;
+            padding: 0;
+            flex-shrink: 0;
+            transition: color 0.2s;
+        }
+
+        .toast-close:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ── Submit Button States ──────────────────────────────────────── */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 0.7rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: opacity 0.3s;
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-submit .btn-spinner {
+            display: none;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .btn-submit.loading .btn-spinner {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── Responsive ────────────────────────────────────────────────── */
+        @media(max-width:1100px) {
             .contact-grid {
-                display: grid;
-                grid-template-columns: 1fr 1.5fr;
-                gap: 72px;
-                align-items: start;
-            }
-            .info-item {
-                display: flex;
-                gap: 16px;
-                margin-bottom: 32px;
-                align-items: flex-start;
-            }
-            .info-icon {
-                width: 46px;
-                height: 46px;
-                background: linear-gradient(135deg, var(--gold-deep), var(--gold));
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-                font-size: 1.1rem;
-            }
-            .info-label {
-                font-family: "Poppins", sans-serif;
-                font-size: 0.58rem;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: var(--gold);
-                margin-bottom: 4px;
-            }
-            .info-value {
-                font-family: "Playfair Display", serif;
-                font-size: 0.9rem;
-                color: var(--ink-faint);
-                line-height: 1.6;
-            }
-            .info-value a {
-                color: var(--ink-faint);
-                text-decoration: none;
-                transition: color 0.3s;
-            }
-            .info-value a:hover { color: var(--gold-deep); }
-
-            /* ── Sidebar Note ──────────────────────────────────────────────── */
-            .sidebar-note {
-                margin-top: 32px;
-                padding: 30px 28px;
-                background-image: url(./Images/main-bg.jpeg);
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                border: 1px solid rgba(201,168,76,0.3);
-                border-left: 3px solid var(--gold);
-                border-radius: 2px;
-            }
-            .sidebar-note p {
-                font-family: "Playfair Display", serif;
-                font-style: italic;
-                font-size: 0.95rem;
-                color: var(--ink-mid);
-                line-height: 1.8;
+                grid-template-columns: 1fr;
             }
 
-            /* ── Form Card ─────────────────────────────────────────────────── */
-            .form-wrap {
-                background-image: url(./Images/main-bg.jpeg);
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                border: 1px solid rgba(201,168,76,0.25);
-                padding: 44px;
-                border-radius: 20px;
-            }
             .form-2col {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 18px;
-            }
-            .form-group { margin-bottom: 16px; }
-            .form-group label {
-                display: block;
-                font-family: "Poppins", sans-serif;
-                font-size: 0.58rem;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: var(--ink-faint);
-                margin-bottom: 7px;
-            }
-            .form-group input,
-            .form-group textarea,
-            .form-group select {
-                width: 100%;
-                background: var(--ivory);
-                border: 1px solid rgba(201,168,76,0.25);
-                border-radius: 1px;
-                padding: 10px 12px;
-                font-family: "Playfair Display", serif;
-                font-size: 0.9rem;
-                color: var(--ink);
-                outline: none;
-                transition: border-color 0.3s, box-shadow 0.3s;
-                box-sizing: border-box;
-            }
-            .form-group input:focus,
-            .form-group textarea:focus,
-            .form-group select:focus {
-                border-color: rgba(201,168,76,0.55);
-                box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
-            }
-            /* Validation states */
-            .form-group input.field-error,
-            .form-group textarea.field-error,
-            .form-group select.field-error {
-                border-color: rgba(200, 80, 60, 0.6);
-                box-shadow: 0 0 0 3px rgba(200, 80, 60, 0.08);
-            }
-            .field-error-msg {
-                display: none;
-                font-family: "Poppins", sans-serif;
-                font-size: 0.55rem;
-                letter-spacing: 0.1em;
-                color: #c84040;
-                margin-top: 4px;
-            }
-            .form-group input.field-error ~ .field-error-msg,
-            .form-group textarea.field-error ~ .field-error-msg,
-            .form-group select.field-error ~ .field-error-msg {
-                display: block;
+                grid-template-columns: 1fr;
             }
 
-            .form-group textarea {
-                resize: none;
-                min-height: 130px;
-            }
-            .form-group input::placeholder,
-            .form-group textarea::placeholder {
-                color: rgba(58,42,16,0.3);
-            }
             .phone-row {
-                display: flex;
-                gap: 12px;
+                flex-direction: column;
             }
-            .phone-row .form-group:first-child { flex: 0 0 140px; }
-            .phone-row .form-group:last-child { flex: 1; }
 
-            /* ── Toast Notification ────────────────────────────────────────── */
+            .phone-row .form-group:first-child {
+                flex: none;
+            }
+
+            .form-wrap {
+                padding: 28px 20px;
+            }
+        }
+
+        @media(max-width:480px) {
             .rasa-toast {
-                position: fixed;
-                bottom: 32px;
-                right: 32px;
-                z-index: 9999;
-                min-width: 280px;
-                max-width: 380px;
-                padding: 18px 22px 18px 18px;
-                border-radius: 8px;
-                display: flex;
-                align-items: flex-start;
-                gap: 14px;
-                box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-                transform: translateY(80px);
-                opacity: 0;
-                transition: transform 0.42s cubic-bezier(0.22,1,0.36,1), opacity 0.42s ease;
-                pointer-events: none;
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
+                min-width: unset;
             }
-            .rasa-toast.show {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: auto;
-            }
-            .rasa-toast.success {
-                background: linear-gradient(135deg, #1e2d1e, #2a3d22);
-                border: 1px solid rgba(100,200,100,0.3);
-                border-left: 4px solid #6bc97a;
-            }
-            .rasa-toast.error {
-                background: linear-gradient(135deg, #2d1e1e, #3d2222);
-                border: 1px solid rgba(200,80,80,0.3);
-                border-left: 4px solid #c84040;
-            }
-            .rasa-toast.loading {
-                background: linear-gradient(135deg, #2a2016, #3a2e10);
-                border: 1px solid rgba(201,168,76,0.3);
-                border-left: 4px solid var(--gold);
-            }
-            .toast-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-            .toast-body { flex: 1; }
-            .toast-title {
-                font-family: "Poppins", sans-serif;
-                font-size: 0.62rem;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: rgba(255,255,255,0.55);
-                margin-bottom: 3px;
-            }
-            .toast-msg {
-                font-family: "Playfair Display", serif;
-                font-size: 0.88rem;
-                color: rgba(255,255,255,0.88);
-                line-height: 1.5;
-            }
-            .toast-close {
-                background: none;
-                border: none;
-                cursor: pointer;
-                color: rgba(255,255,255,0.4);
-                font-size: 1rem;
-                line-height: 1;
-                padding: 0;
-                flex-shrink: 0;
-                transition: color 0.2s;
-            }
-            .toast-close:hover { color: rgba(255,255,255,0.8); }
+        }
+    </style>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+</head>
 
-            /* ── Submit Button States ──────────────────────────────────────── */
-            .btn-submit {
-                width: 100%;
-                padding: 14px;
-                font-size: 0.7rem;
-                border: none;
-                cursor: pointer;
-                position: relative;
-                overflow: hidden;
-                transition: opacity 0.3s;
-            }
-            .btn-submit:disabled {
-                opacity: 0.7;
-                cursor: not-allowed;
-            }
-            .btn-submit .btn-spinner {
-                display: none;
-                width: 14px;
-                height: 14px;
-                border: 2px solid rgba(255,255,255,0.4);
-                border-top-color: #fff;
-                border-radius: 50%;
-                animation: spin 0.7s linear infinite;
-                margin-right: 8px;
-                vertical-align: middle;
-            }
-            .btn-submit.loading .btn-spinner { display: inline-block; }
-            @keyframes spin { to { transform: rotate(360deg); } }
+<body>
 
-            /* ── Responsive ────────────────────────────────────────────────── */
-            @media(max-width:1100px) {
-                .contact-grid { grid-template-columns: 1fr; }
-                .form-2col { grid-template-columns: 1fr; }
-                .phone-row { flex-direction: column; }
-                .phone-row .form-group:first-child { flex: none; }
-                .form-wrap { padding: 28px 20px; }
-            }
-            @media(max-width:480px) {
-                .rasa-toast { left: 16px; right: 16px; bottom: 16px; min-width: unset; }
-            }
-        </style>
-        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-    </head>
-    <body>
+    <!-- ── Sidebar ──────────────────────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+        <svg class="sidebar-deco sidebar-deco-top" width="76" height="76" viewBox="0 0 76 76">
+            <g fill="none" stroke="#C9A84C" stroke-width="1">
+                <circle cx="38" cy="38" r="26" />
+                <circle cx="38" cy="38" r="16" />
+                <path
+                    d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z" />
+            </g>
+        </svg>
+        <svg class="sidebar-deco sidebar-deco-bot" width="76" height="76" viewBox="0 0 76 76">
+            <g fill="none" stroke="#C9A84C" stroke-width="1">
+                <circle cx="38" cy="38" r="26" />
+                <circle cx="38" cy="38" r="8" />
+                <path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38" />
+                <circle cx="38" cy="38" r="3" />
+            </g>
+        </svg>
 
-        <!-- ── Sidebar ──────────────────────────────────────────────────────── -->
-        <aside class="sidebar" id="sidebar">
-            <svg class="sidebar-deco sidebar-deco-top" width="76" height="76" viewBox="0 0 76 76">
-                <g fill="none" stroke="#C9A84C" stroke-width="1">
-                    <circle cx="38" cy="38" r="26"/>
-                    <circle cx="38" cy="38" r="16"/>
-                    <path d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z"/>
-                </g>
-            </svg>
-            <svg class="sidebar-deco sidebar-deco-bot" width="76" height="76" viewBox="0 0 76 76">
-                <g fill="none" stroke="#C9A84C" stroke-width="1">
-                    <circle cx="38" cy="38" r="26"/>
-                    <circle cx="38" cy="38" r="8"/>
-                    <path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38"/>
-                    <circle cx="38" cy="38" r="3"/>
-                </g>
-            </svg>
+        <a href="./index.html" class="sidebar-logo">
+            <img src="./Images/logo.png" alt="RASA">
+            <span class="sidebar-logo-tag">Premium Spices &amp; Blends</span>
+        </a>
+        <div class="sidebar-rule"></div>
+        <ul class="nav-list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li><a href="./recipes/">Recipes</a></li>
+            <li><a href="./purchase.html">Purchase</a></li>
+            <li><a href="./contact.html" class="active">Contact Us</a></li>
+        </ul>
+        <div class="sidebar-buy">
+            <a href="https://blinkit.com" target="_blank">Buy on Blinkit</a>
+        </div>
+        <span class="sidebar-copy">© 2026 RASA</span>
+    </aside>
 
-            <a href="./index.html" class="sidebar-logo">
-                <img src="./logo.png" alt="RASA">
-                <span class="sidebar-logo-tag">Premium Spices &amp; Blends</span>
-            </a>
-            <div class="sidebar-rule"></div>
-            <ul class="nav-list">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About Us</a></li>
-                <li><a href="./products.html">Products</a></li>
-                <li><a href="./recipes/">Recipes</a></li>
-                <li><a href="./purchase.html">Purchase</a></li>
-                <li><a href="./contact.html" class="active">Contact Us</a></li>
-            </ul>
-            <div class="sidebar-buy">
-                <a href="https://blinkit.com" target="_blank">Buy on Blinkit</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <!-- ── Main ─────────────────────────────────────────────────────────── -->
+    <main class="page-wrap">
+        <div class="page-hero">
+            <div class="page-hero-inner">
+                <div class="page-hero-tag">Get in Touch</div>
+                <h1 class="page-hero-title">Let's <em>Talk</em></h1>
             </div>
-            <span class="sidebar-copy">© 2026 RASA</span>
-        </aside>
-
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-
-        <!-- ── Main ─────────────────────────────────────────────────────────── -->
-        <main class="page-wrap">
-            <div class="page-hero">
-                <div class="page-hero-inner">
-                    <div class="page-hero-tag">Get in Touch</div>
-                    <h1 class="page-hero-title">Let's <em>Talk</em></h1>
-                </div>
-            </div>
-
-            <section style="background:var(--ivory);">
-                <div class="contact-grid">
-
-                    <!-- Left: Info Panel -->
-                    <div>
-                        <div class="eyebrow fade-up">Contact RASA</div>
-                        <h2 class="sec-title fade-up" style="font-size:2rem;margin-bottom:36px;">We'd Love to<br><em>Hear from You</em></h2>
-
-                        <div class="info-item fade-up">
-                            <div class="info-icon">✉</div>
-                            <div>
-                                <div class="info-label">Email</div>
-                                <div class="info-value"><a href="mailto:hello@rasa.in">hello@rasa.in</a></div>
-                            </div>
-                        </div>
-                        <div class="info-item fade-up">
-                            <div class="info-icon">☎</div>
-                            <div>
-                                <div class="info-label">Phone</div>
-                                <div class="info-value"><a href="tel:+919876543210">+91 98765 43210</a></div>
-                            </div>
-                        </div>
-                        <div class="info-item fade-up">
-                            <div class="info-icon">◎</div>
-                            <div>
-                                <div class="info-label">Address</div>
-                                <div class="info-value">Bangalore<br>India</div>
-                            </div>
-                        </div>
-                        <div class="info-item fade-up">
-                            <div class="info-icon">◷</div>
-                            <div>
-                                <div class="info-label">Hours</div>
-                                <div class="info-value">Mon – Fri, 10:00 AM – 6:00 PM IST</div>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-note fade-up">
-                            <p>"Every question, every suggestion, every story about a meal you made with RASA — we want to hear it all."</p>
-                        </div>
-                    </div>
-
-                    <!-- Right: Form -->
-                    <div class="form-wrap fade-up">
-                        <div class="eyebrow" style="margin-bottom:24px;">Send a Message</div>
-
-                        <form id="rasaContactForm" novalidate>
-                            <div class="form-2col">
-                                <div class="form-group">
-                                    <label for="cf-name">Your Name <span style="color:var(--gold)">*</span></label>
-                                    <input id="cf-name" name="name" type="text" placeholder="Full name" autocomplete="name">
-                                    <span class="field-error-msg">Please enter your name.</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="cf-email">Email Address <span style="color:var(--gold)">*</span></label>
-                                    <input id="cf-email" name="email" type="email" placeholder="your@email.com" autocomplete="email">
-                                    <span class="field-error-msg">Please enter a valid email.</span>
-                                </div>
-                            </div>
-
-                            <div class="phone-row">
-                                <div class="form-group">
-                                    <label for="cf-cc">Country Code</label>
-                                    <select id="cf-cc" name="countryCode">
-                                        <option value="+91">🇮🇳 (+91)</option>
-                                        <option value="+1">🇺🇸 (+1)</option>
-                                        <option value="+44">🇬🇧 (+44)</option>
-                                        <option value="+61">🇦🇺 (+61)</option>
-                                        <option value="+971">🇦🇪 (+971)</option>
-                                        <option value="+65">🇸🇬 (+65)</option>
-                                        <option value="+60">🇲🇾 (+60)</option>
-                                        <option value="+94">🇱🇰 (+94)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="cf-mobile">Mobile Number</label>
-                                    <input id="cf-mobile" name="mobile" type="tel" placeholder="XXXXX XXXXX" autocomplete="tel">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="cf-subject">Subject</label>
-                                <input id="cf-subject" name="subject" type="text" placeholder="How can we help?">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="cf-message">Your Message <span style="color:var(--gold)">*</span></label>
-                                <textarea id="cf-message" name="message" placeholder="Tell us more..."></textarea>
-                                <span class="field-error-msg">Please write your message.</span>
-                            </div>
-
-                            <button type="submit" id="submitBtn" class="btn-gold btn-submit">
-                                <span class="btn-spinner"></span>
-                                <span class="btn-label">Send Message</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ── Footer ──────────────────────────────────────────────────── -->
-            <footer>
-                <div class="footer-grid">
-                    <div>
-                        <img src="./logo.png" alt="RASA" class="footer-logo">
-                        <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted for modern kitchens.</p>
-                        <div class="footer-socials">
-                            <a class="soc-icon" href="#">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-                            </a>
-                            <a class="soc-icon" href="#">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-                            </a>
-                            <a class="soc-icon" href="#">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6"><path d="M16 8a6 6 0 016 6v6"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9v12M10 13a4 4 0 018 0"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h5>Explore</h5>
-                        <ul class="footer-links">
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./about.html">About Us</a></li>
-                            <li><a href="./products.html">Products</a></li>
-                            <li><a href="./recipes/">Recipes</a></li>
-                            <li><a href="./contact.html">Contact Us</a></li>
-                            <li><a href="./purchase.html">Purchase</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h5>Contact</h5>
-                        <ul class="footer-links">
-                            <li><a href="mailto:hello@rasa.in">hello@rasa.in</a></li>
-                            <li><a href="tel:+919876543210">+91 98765 43210</a></li>
-                            <li><a>Bangalore, India</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-contact-col">
-                        <h5>Get in Touch</h5>
-                        <div class="footer-form-group"><input type="text" placeholder="Your Name"></div>
-                        <div class="footer-form-group footer-phone-row">
-                            <select class="footer-cc">
-                                <option>🇮🇳 +91</option>
-                                <option>🇺🇸 +1</option>
-                                <option>🇬🇧 +44</option>
-                                <option>🇦🇺 +61</option>
-                                <option>🇦🇪 +971</option>
-                                <option>🇸🇬 +65</option>
-                            </select>
-                            <input type="tel" placeholder="Mobile Number" style="flex:1;width:auto;">
-                        </div>
-                        <div class="footer-form-group">
-                            <textarea placeholder="Your message..."></textarea>
-                        </div>
-                        <button class="footer-submit" onclick="this.textContent='Sent ✓';setTimeout(()=>this.textContent='Send Message',3000)">Send Message</button>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p class="footer-copy">© 2026 <span>RASA</span>. All rights reserved.</p>
-                    <p class="footer-copy">Flavor. Made Simple.</p>
-                </div>
-            </footer>
-        </main>
-
-        <!-- ── Toast ─────────────────────────────────────────────────────────── -->
-        <div class="rasa-toast" id="rasaToast" role="alert" aria-live="assertive">
-            <span class="toast-icon" id="toastIcon"></span>
-            <div class="toast-body">
-                <div class="toast-title" id="toastTitle"></div>
-                <div class="toast-msg" id="toastMsg"></div>
-            </div>
-            <button class="toast-close" id="toastClose" aria-label="Close">✕</button>
         </div>
 
-        <!-- ── Scripts ───────────────────────────────────────────────────────── -->
+        <section style="background:var(--ivory);">
+            <div class="contact-grid">
+
+                <!-- Left: Info Panel -->
+                <div>
+                    <div class="eyebrow fade-up">Contact RASA</div>
+                    <h2 class="sec-title fade-up" style="font-size:2rem;margin-bottom:36px;">We'd Love to<br><em>Hear
+                            from You</em></h2>
+
+                    <div class="info-item fade-up">
+                        <div class="info-icon">✉</div>
+                        <div>
+                            <div class="info-label">Email</div>
+                            <div class="info-value"><a href="mailto:hello@rasa.in">hello@rasa.in</a></div>
+                        </div>
+                    </div>
+                    <div class="info-item fade-up">
+                        <div class="info-icon">☎</div>
+                        <div>
+                            <div class="info-label">Phone</div>
+                            <div class="info-value"><a href="tel:+919876543210">+91 98765 43210</a></div>
+                        </div>
+                    </div>
+                    <div class="info-item fade-up">
+                        <div class="info-icon">◎</div>
+                        <div>
+                            <div class="info-label">Address</div>
+                            <div class="info-value">Bangalore<br>India</div>
+                        </div>
+                    </div>
+                    <div class="info-item fade-up">
+                        <div class="info-icon">◷</div>
+                        <div>
+                            <div class="info-label">Hours</div>
+                            <div class="info-value">Mon – Fri, 10:00 AM – 6:00 PM IST</div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-note fade-up">
+                        <p>"Every question, every suggestion, every story about a meal you made with RASA — we want to
+                            hear it all."</p>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <!-- <div class="form-wrap fade-up">
+                    <div class="eyebrow" style="margin-bottom:24px;">Send a Message</div>
+
+                    <form id="rasaContactForm" novalidate>
+                        <div class="form-2col">
+                            <div class="form-group">
+                                <label for="cf-name">Your Name <span style="color:var(--gold)">*</span></label>
+                                <input id="cf-name" name="name" type="text" placeholder="Full name" autocomplete="name">
+                                <span class="field-error-msg">Please enter your name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="cf-email">Email Address <span style="color:var(--gold)">*</span></label>
+                                <input id="cf-email" name="email" type="email" placeholder="your@email.com"
+                                    autocomplete="email">
+                                <span class="field-error-msg">Please enter a valid email.</span>
+                            </div>
+                        </div>
+
+                        <div class="phone-row">
+                            <div class="form-group">
+                                <label for="cf-cc">Country Code</label>
+                                <select id="cf-cc" name="countryCode">
+                                    <option value="+91">🇮🇳 (+91)</option>
+                                    <option value="+1">🇺🇸 (+1)</option>
+                                    <option value="+44">🇬🇧 (+44)</option>
+                                    <option value="+61">🇦🇺 (+61)</option>
+                                    <option value="+971">🇦🇪 (+971)</option>
+                                    <option value="+65">🇸🇬 (+65)</option>
+                                    <option value="+60">🇲🇾 (+60)</option>
+                                    <option value="+94">🇱🇰 (+94)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cf-mobile">Mobile Number</label>
+                                <input id="cf-mobile" name="mobile" type="tel" placeholder="XXXXX XXXXX"
+                                    autocomplete="tel">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf-subject">Subject</label>
+                            <input id="cf-subject" name="subject" type="text" placeholder="How can we help?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cf-message">Your Message <span style="color:var(--gold)">*</span></label>
+                            <textarea id="cf-message" name="message" placeholder="Tell us more..."></textarea>
+                            <span class="field-error-msg">Please write your message.</span>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="btn-gold btn-submit">
+                            <span class="btn-spinner"></span>
+                            <span class="btn-label">Send Message</span>
+                        </button>
+                    </form>
+                </div> -->
+
+                <!-- Right: Form -->
+                <div class="form-wrap fade-up">
+                    <div class="eyebrow" style="margin-bottom:24px;">Send a Message</div>
+
+                    <form id="rasaContactForm" novalidate>
+                        <div class="form-2col">
+                            <div class="form-group">
+                                <label for="cf-name">Your Name <span style="color:var(--gold)">*</span></label>
+                                <input id="cf-name" name="name" type="text" placeholder="Full name" autocomplete="name">
+                                <span class="field-error-msg">Please enter your name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="cf-email">Email Address <span style="color:var(--gold)">*</span></label>
+                                <input id="cf-email" name="email" type="email" placeholder="your@email.com"
+                                    autocomplete="email">
+                                <span class="field-error-msg">Please enter a valid email.</span>
+                            </div>
+                        </div>
+
+                        <div class="phone-row">
+                            <div class="form-group">
+                                <label for="cf-cc">Country Code</label>
+                                <select id="cf-cc" name="countryCode">
+                                    <option value="+91">🇮🇳 (+91)</option>
+                                    <option value="+1">🇺🇸 (+1)</option>
+                                    <option value="+44">🇬🇧 (+44)</option>
+                                    <option value="+61">🇦🇺 (+61)</option>
+                                    <option value="+971">🇦🇪 (+971)</option>
+                                    <option value="+65">🇸🇬 (+65)</option>
+                                    <option value="+60">🇲🇾 (+60)</option>
+                                    <option value="+94">🇱🇰 (+94)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cf-mobile">Mobile Number</label>
+                                <input id="cf-mobile" name="mobile" type="tel" placeholder="XXXXX XXXXX"
+                                    autocomplete="tel">
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label for="cf-subject">Subject</label>
+                            <input id="cf-subject" name="subject" type="text" placeholder="How can we help?">
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="cf-message">Your Message <span style="color:var(--gold)">*</span></label>
+                            <textarea id="cf-message" name="message" placeholder="Tell us more..."></textarea>
+                            <span class="field-error-msg">Please write your message.</span>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="btn-gold btn-submit">
+                            <span class="btn-spinner"></span>
+                            <span class="btn-label">Send Message</span>
+                        </button>
+
+                        <p id="formSuccess" style="display:none; color:green; margin-top:12px; font-weight:600;">✅ Your
+                            message has been sent successfully!</p>
+                        <p id="formError" style="display:none; color:red; margin-top:12px; font-weight:600;">❌ Something
+                            went wrong. Please try again.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <script>
-            // ── Config ────────────────────────────────────────────────────────
-            // ⚙️  Replace this URL with your deployed Google Cloud Function URL
-            const CLOUD_FUNCTION_URL = "https://emailjsfuntions-428145106157.asia-south1.run.app/rasaContactForm";
-
-            // ── Sidebar Toggle ─────────────────────────────────────────────────
-            const ham = document.getElementById("hamburger");
-            const sb  = document.getElementById("sidebar");
-            ham.addEventListener("click", () => sb.classList.toggle("open"));
-            document.addEventListener("click", e => {
-                if (!sb.contains(e.target) && !ham.contains(e.target))
-                    sb.classList.remove("open");
-            });
-
-            // ── GSAP Scroll Animations ─────────────────────────────────────────
-            window.addEventListener("load", () => {
-                if (typeof gsap === "undefined") return;
-                gsap.registerPlugin(ScrollTrigger);
-                document.querySelectorAll(".fade-up").forEach(el => {
-                    gsap.fromTo(el,
-                        { opacity: 0, y: 28 },
-                        {
-                            opacity: 1, y: 0,
-                            duration: 0.82,
-                            ease: "power3.out",
-                            scrollTrigger: {
-                                trigger: el,
-                                start: "top 88%",
-                                toggleActions: "play none none none"
-                            }
-                        }
-                    );
-                });
-            });
-
-            // ── Toast ──────────────────────────────────────────────────────────
-            let toastTimer = null;
-
-            function showToast(type, title, msg) {
-                const toast = document.getElementById("rasaToast");
-                toast.className = "rasa-toast " + type;
-                document.getElementById("toastIcon").textContent =
-                    type === "success" ? "✓" : type === "error" ? "✕" : "…";
-                document.getElementById("toastTitle").textContent = title;
-                document.getElementById("toastMsg").textContent   = msg;
-                toast.classList.add("show");
-                clearTimeout(toastTimer);
-                if (type !== "loading") {
-                    toastTimer = setTimeout(() => toast.classList.remove("show"), 5000);
-                }
-            }
-
-            function hideToast() {
-                document.getElementById("rasaToast").classList.remove("show");
-            }
-
-            document.getElementById("toastClose").addEventListener("click", hideToast);
-
-            // ── Validation ─────────────────────────────────────────────────────
-            function validateField(input) {
-                const isEmail = input.type === "email";
-                const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-                const empty   = input.value.trim() === "";
-                const required = input.closest(".form-group")
-                    .querySelector("label span[style*='gold']") !== null;
-
-                let invalid = false;
-                if (required && empty) invalid = true;
-                if (isEmail && !empty && !emailOk) invalid = true;
-
-                input.classList.toggle("field-error", invalid);
-                return !invalid;
-            }
-
-            // Live clear on input
-            document.querySelectorAll("#rasaContactForm input, #rasaContactForm textarea").forEach(el => {
-                el.addEventListener("input", () => el.classList.remove("field-error"));
-            });
-
-            // ── Form Submit ────────────────────────────────────────────────────
-            document.getElementById("rasaContactForm").addEventListener("submit", async function(e) {
+            document.getElementById("rasaContactForm").addEventListener("submit", async function (e) {
                 e.preventDefault();
 
-                const nameEl    = document.getElementById("cf-name");
-                const emailEl   = document.getElementById("cf-email");
-                const msgEl     = document.getElementById("cf-message");
+                const submitBtn = document.getElementById("submitBtn");
+                const btnLabel = submitBtn.querySelector(".btn-label");
+                const successMsg = document.getElementById("formSuccess");
+                const errorMsg = document.getElementById("formError");
 
-                const v1 = validateField(nameEl);
-                const v2 = validateField(emailEl);
-                const v3 = validateField(msgEl);
-
-                if (!v1 || !v2 || !v3) {
-                    showToast("error", "Missing Fields", "Please fill in all required fields.");
-                    return;
-                }
-
-                const btn   = document.getElementById("submitBtn");
-                const label = btn.querySelector(".btn-label");
-
-                // Loading state
-                btn.disabled = true;
-                btn.classList.add("loading");
-                label.textContent = "Sending…";
-                showToast("loading", "Sending", "Your message is on its way to RASA…");
+                successMsg.style.display = "none";
+                errorMsg.style.display = "none";
 
                 const payload = {
-                    name:        nameEl.value.trim(),
-                    email:       emailEl.value.trim(),
+                    name: document.getElementById("cf-name").value.trim(),
+                    email: document.getElementById("cf-email").value.trim(),
                     countryCode: document.getElementById("cf-cc").value,
-                    mobile:      document.getElementById("cf-mobile").value.trim(),
-                    subject:     document.getElementById("cf-subject").value.trim(),
-                    message:     msgEl.value.trim(),
+                    mobile: document.getElementById("cf-mobile").value.trim(),
+                    // subject: document.getElementById("cf-subject").value.trim(),
+                    message: document.getElementById("cf-message").value.trim()
                 };
 
+                submitBtn.disabled = true;
+                btnLabel.textContent = "Sending...";
+
                 try {
-                    const response = await fetch(CLOUD_FUNCTION_URL, {
+                    const response = await fetch("https://emailjsfuntions-428145106157.asia-south1.run.app/rasa-contact-form", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload),
+                        body: JSON.stringify(payload)
                     });
 
-                    const data = await response.json();
+                    const result = await response.json();
 
-                    if (response.ok && data.success) {
-                        showToast("success", "Message Sent", "Thank you! We'll get back to you shortly.");
+                    if (response.ok && result.success) {
+                        successMsg.style.display = "block";
                         document.getElementById("rasaContactForm").reset();
                     } else {
-                        showToast("error", "Delivery Failed", data.message || "Something went wrong. Please try again.");
+                        errorMsg.style.display = "block";
                     }
                 } catch (err) {
-                    console.error("Form submission error:", err);
-                    showToast("error", "Network Error", "Could not reach our server. Please try again later.");
+                    console.error(err);
+                    errorMsg.style.display = "block";
                 } finally {
-                    btn.disabled = false;
-                    btn.classList.remove("loading");
-                    label.textContent = "Send Message";
+                    submitBtn.disabled = false;
+                    btnLabel.textContent = "Send Message";
                 }
             });
         </script>
-    </body>
+
+        <!-- ── Footer ──────────────────────────────────────────────────── -->
+        <footer>
+            <div class="footer-grid">
+                <div>
+                    <img src="./Images/logo.png" alt="RASA" class="footer-logo">
+                    <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted
+                        for modern kitchens.</p>
+                    <div class="footer-socials">
+                        <a class="soc-icon" href="#">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C"
+                                stroke-width="1.6">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="1" />
+                            </svg>
+                        </a>
+                        <a class="soc-icon" href="#">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C"
+                                stroke-width="1.6">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+                        <a class="soc-icon" href="#">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C"
+                                stroke-width="1.6">
+                                <path d="M16 8a6 6 0 016 6v6" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                                <path d="M10 9v12M10 13a4 4 0 018 0" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <ul class="footer-links">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="./products.html">Products</a></li>
+                        <li><a href="./recipes/">Recipes</a></li>
+                        <li><a href="./contact.html">Contact Us</a></li>
+                        <li><a href="./purchase.html">Purchase</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@rasa.in">hello@rasa.in</a></li>
+                        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+                        <li><a>Bangalore, India</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-col">
+                    <h5>Get in Touch</h5>
+
+                    <form id="rasaFooterForm">
+                        <div class="footer-form-group">
+                            <input id="footer-name" type="text" placeholder="Your Name" />
+                        </div>
+                        <div class="footer-form-group footer-phone-row">
+                            <select id="footer-cc" class="footer-cc">
+                                <option value="+91">🇮🇳 +91</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+61">🇦🇺 +61</option>
+                                <option value="+971">🇦🇪 +971</option>
+                                <option value="+65">🇸🇬 +65</option>
+                            </select>
+                            <input id="footer-mobile" type="tel" placeholder="Mobile Number" style="flex: 1" />
+                        </div>
+                        <div class="footer-form-group">
+                            <textarea id="footer-message" placeholder="Your message..."></textarea>
+                        </div>
+                        <button id="footerSubmitBtn" class="footer-submit">Send Message</button>
+
+                        <p id="footerSuccess" style="display:none; color:green; margin-top:10px; font-weight:600;">✅
+                            Message sent successfully!</p>
+                        <p id="footerError" style="display:none; color:red; margin-top:10px; font-weight:600;">❌
+                            Something went wrong. Please try again.</p>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2026 <span>RASA</span>. All rights reserved.</p>
+                <p class="footer-copy">Flavor. Made Simple.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ── Toast ─────────────────────────────────────────────────────────── -->
+    <div class="rasa-toast" id="rasaToast" role="alert" aria-live="assertive">
+        <span class="toast-icon" id="toastIcon"></span>
+        <div class="toast-body">
+            <div class="toast-title" id="toastTitle"></div>
+            <div class="toast-msg" id="toastMsg"></div>
+        </div>
+        <button class="toast-close" id="toastClose" aria-label="Close">✕</button>
+    </div>
+
+    <!-- ── Scripts ───────────────────────────────────────────────────────── -->
+    <script>
+        // ── Config ────────────────────────────────────────────────────────
+        // ⚙️  Replace this URL with your deployed Google Cloud Function URL
+        const CLOUD_FUNCTION_URL = "https://emailjsfuntions-428145106157.asia-south1.run.app/rasaContactForm";
+
+        // ── Sidebar Toggle ─────────────────────────────────────────────────
+        const ham = document.getElementById("hamburger");
+        const sb = document.getElementById("sidebar");
+        ham.addEventListener("click", () => sb.classList.toggle("open"));
+        document.addEventListener("click", e => {
+            if (!sb.contains(e.target) && !ham.contains(e.target))
+                sb.classList.remove("open");
+        });
+
+        // ── GSAP Scroll Animations ─────────────────────────────────────────
+        window.addEventListener("load", () => {
+            if (typeof gsap === "undefined") return;
+            gsap.registerPlugin(ScrollTrigger);
+            document.querySelectorAll(".fade-up").forEach(el => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 28 },
+                    {
+                        opacity: 1, y: 0,
+                        duration: 0.82,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 88%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
+        });
+
+        // ── Toast ──────────────────────────────────────────────────────────
+        let toastTimer = null;
+
+        function showToast(type, title, msg) {
+            const toast = document.getElementById("rasaToast");
+            toast.className = "rasa-toast " + type;
+            document.getElementById("toastIcon").textContent =
+                type === "success" ? "✓" : type === "error" ? "✕" : "…";
+            document.getElementById("toastTitle").textContent = title;
+            document.getElementById("toastMsg").textContent = msg;
+            toast.classList.add("show");
+            clearTimeout(toastTimer);
+            if (type !== "loading") {
+                toastTimer = setTimeout(() => toast.classList.remove("show"), 5000);
+            }
+        }
+
+        function hideToast() {
+            document.getElementById("rasaToast").classList.remove("show");
+        }
+
+        document.getElementById("toastClose").addEventListener("click", hideToast);
+
+        // ── Validation ─────────────────────────────────────────────────────
+        function validateField(input) {
+            const isEmail = input.type === "email";
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+            const empty = input.value.trim() === "";
+            const required = input.closest(".form-group")
+                .querySelector("label span[style*='gold']") !== null;
+
+            let invalid = false;
+            if (required && empty) invalid = true;
+            if (isEmail && !empty && !emailOk) invalid = true;
+
+            input.classList.toggle("field-error", invalid);
+            return !invalid;
+        }
+
+        // Live clear on input
+        document.querySelectorAll("#rasaContactForm input, #rasaContactForm textarea").forEach(el => {
+            el.addEventListener("input", () => el.classList.remove("field-error"));
+        });
+
+        // ── Form Submit ────────────────────────────────────────────────────
+        document.getElementById("rasaContactForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const nameEl = document.getElementById("cf-name");
+            const emailEl = document.getElementById("cf-email");
+            const msgEl = document.getElementById("cf-message");
+
+            const v1 = validateField(nameEl);
+            const v2 = validateField(emailEl);
+            const v3 = validateField(msgEl);
+
+            if (!v1 || !v2 || !v3) {
+                showToast("error", "Missing Fields", "Please fill in all required fields.");
+                return;
+            }
+
+            const btn = document.getElementById("submitBtn");
+            const label = btn.querySelector(".btn-label");
+
+            // Loading state
+            btn.disabled = true;
+            btn.classList.add("loading");
+            label.textContent = "Sending…";
+            showToast("loading", "Sending", "Your message is on its way to RASA…");
+
+            const payload = {
+                name: nameEl.value.trim(),
+                email: emailEl.value.trim(),
+                countryCode: document.getElementById("cf-cc").value,
+                mobile: document.getElementById("cf-mobile").value.trim(),
+                subject: document.getElementById("cf-subject").value.trim(),
+                message: msgEl.value.trim(),
+            };
+
+            try {
+                const response = await fetch(CLOUD_FUNCTION_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    showToast("success", "Message Sent", "Thank you! We'll get back to you shortly.");
+                    document.getElementById("rasaContactForm").reset();
+                } else {
+                    showToast("error", "Delivery Failed", data.message || "Something went wrong. Please try again.");
+                }
+            } catch (err) {
+                console.error("Form submission error:", err);
+                showToast("error", "Network Error", "Could not reach our server. Please try again later.");
+            } finally {
+                btn.disabled = false;
+                btn.classList.remove("loading");
+                label.textContent = "Send Message";
+            }
+        });
+    </script>
+    <script src="./email.js"></script>
+</body>
+
 </html>

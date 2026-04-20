@@ -138,7 +138,7 @@
             </svg>
 
             <a href="./index.html" class="sidebar-logo">
-                <img src="./logo.png" alt="RASA">
+                <img src="./Images/logo.png" alt="RASA">
                 <span class="sidebar-logo-tag">Premium Spices &amp; Blends</span>
             </a>
             <div class="sidebar-rule"></div>
@@ -254,7 +254,7 @@
             <footer>
                 <div class="footer-grid">
                     <div>
-                        <img src="./logo.png" alt="RASA" class="footer-logo">
+                        <img src="./Images/logo.png" alt="RASA" class="footer-logo">
                         <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted for modern kitchens.</p>
                         <div class="footer-socials">
                             <a class="soc-icon" href="#">
@@ -305,25 +305,35 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer-contact-col">
-                        <h5>Get in Touch</h5>
-                        <div class="footer-form-group"><input type="text" placeholder="Your Name"></div>
+                <div class="footer-contact-col">
+                    <h5>Get in Touch</h5>
+
+                    <form id="rasaFooterForm">
+                        <div class="footer-form-group">
+                            <input id="footer-name" type="text" placeholder="Your Name" />
+                        </div>
                         <div class="footer-form-group footer-phone-row">
-                            <select class="footer-cc">
-                                <option>🇮🇳 +91</option>
-                                <option>🇺🇸 +1</option>
-                                <option>🇬🇧 +44</option>
-                                <option>🇦🇺 +61</option>
-                                <option>🇦🇪 +971</option>
-                                <option>🇸🇬 +65</option>
+                            <select id="footer-cc" class="footer-cc">
+                                <option value="+91">🇮🇳 +91</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+61">🇦🇺 +61</option>
+                                <option value="+971">🇦🇪 +971</option>
+                                <option value="+65">🇸🇬 +65</option>
                             </select>
-                            <input type="tel" placeholder="Mobile Number" style="flex:1;width:auto;">
+                            <input id="footer-mobile" type="tel" placeholder="Mobile Number" style="flex: 1" />
                         </div>
                         <div class="footer-form-group">
-                            <textarea placeholder="Your message..."></textarea>
+                            <textarea id="footer-message" placeholder="Your message..."></textarea>
                         </div>
-                        <button class="footer-submit" onclick="this.textContent='Sent ✓';setTimeout(()=>this.textContent='Send Message',3000)">Send Message</button>
-                    </div>
+                        <button id="footerSubmitBtn" class="footer-submit">Send Message</button>
+
+                        <p id="footerSuccess" style="display:none; color:green; margin-top:10px; font-weight:600;">✅
+                            Message sent successfully!</p>
+                        <p id="footerError" style="display:none; color:red; margin-top:10px; font-weight:600;">❌
+                            Something went wrong. Please try again.</p>
+                    </form>
+                </div>
                 </div>
                 <div class="footer-bottom">
                     <p class="footer-copy">© 2026
@@ -364,5 +374,6 @@
                 });
             });
         </script>
+        <script src="./email.js"></script>
     </body>
 </html>
