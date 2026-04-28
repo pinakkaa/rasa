@@ -204,7 +204,7 @@ body::after {
 }
 .sidebar-copy {
     margin-top: 12px;
-    font-size: 0.78rem;
+    font-size: 1rem;
     color: var(--ink-faint);
     letter-spacing: 0.1em;
     opacity: 0.55;
@@ -534,23 +534,27 @@ section,
 }
 .btn-buy {
     background: transparent;
-    color: var(--gold-deep);
+    /* color: var(--gold-deep); */
     padding: 7px 15px;
     font-family: "Poppins", sans-serif;
     font-size: 0.52rem;
     font-weight: 500;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    border: 1px solid rgba(201, 168, 76, 0.42);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
     white-space: nowrap;
-}
-.btn-buy:hover {
     background: var(--gold);
     color: var(--ivory);
-    border-color: var(--gold);
+    /* border-color: var(--gold); */
+    border: 1px solid transparent;
+}
+.btn-buy:hover {
+    background: transparent;
+    color: var(--gold-deep);
+    border: 1px solid rgba(201, 168, 76, 0.42);
+    scale: 1.1;
 }
 
 /* ========== CTA SECTION ========== */
@@ -650,8 +654,8 @@ footer::after {
     margin-top: 16px;
 }
 .soc-icon {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     border: 1px solid rgba(201, 168, 76, 0.22);
     border-radius: 50%;
     display: flex;
@@ -659,6 +663,10 @@ footer::after {
     justify-content: center;
     text-decoration: none;
     transition: all 0.3s;
+}
+.soc-icon svg{
+    height: 22px;
+    width: 22px;
 }
 .soc-icon:hover {
     border-color: var(--gold);

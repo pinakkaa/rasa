@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes — RASA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap"
-        rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <style>
-        /* ===== DESIGN TOKENS ===== */
-        :root {
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recipes — RASA</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <style>
+        /* ===== DESIGN TOKENS ===== */:root
+        {
             --gold: #C9A84C;
             --gold-light: #E8C97A;
             --gold-deep: #9E7B2F;
@@ -72,7 +70,7 @@
             padding: 32px 0 28px;
             z-index: 500;
             overflow: hidden;
-            background-image: url(../Images/nav-bg.jpeg);
+            background-image: url('../Images/nav-bg.jpeg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -228,7 +226,7 @@
 
         .sidebar-copy {
             margin-top: 12px;
-            font-size: 0.78rem;
+            font-size: 1rem;
             color: var(--ink-faint);
             letter-spacing: 0.1em;
             opacity: 0.55;
@@ -271,7 +269,7 @@
         /* PAGE HERO */
         .page-hero {
             /* background: linear-gradient(160deg,var(--parch-3) 0%,var(--parch-2) 100%); */
-            background-image: url(../Images/main-bg.jpeg);
+            background-image: url('../Images/main-bg.jpeg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -329,10 +327,11 @@
         /* HELPERS */
         .eyebrow {
             font-family: 'Cinzel', serif;
-            font-size: 0.62rem;
+            font-size: 0.92rem;
             letter-spacing: 0.32em;
             text-transform: uppercase;
             color: var(--gold);
+            font-weight: 600;
             margin-bottom: 14px;
         }
 
@@ -481,7 +480,7 @@
             opacity: 0.07;
         }
 
-        footer>* {
+        footer > * {
             position: relative;
             z-index: 1;
         }
@@ -528,8 +527,8 @@
         }
 
         .soc-icon {
-            width: 32px;
-            height: 32px;
+            width: 48px;
+            height: 48px;
             border: 1px solid rgba(201, 168, 76, 0.22);
             border-radius: 50%;
             display: flex;
@@ -537,6 +536,10 @@
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s;
+        }
+        .soc-icon svg {
+            height: 22px;
+            width: 22px;
         }
 
         .soc-icon:hover {
@@ -804,9 +807,9 @@
 
         .rc-meta span {
             font-family: 'Cinzel', serif;
-            font-size: 0.52rem;
+            font-size: 0.8rem;
             letter-spacing: 0.1em;
-            color: var(--ink-faint);
+            color: black;
             opacity: 0.85;
         }
 
@@ -820,7 +823,7 @@
 
         .rc-link {
             font-family: 'Cinzel', serif;
-            font-size: 0.55rem;
+            font-size: 0.75rem;
             letter-spacing: 0.14em;
             color: var(--gold-deep);
             text-decoration: none;
@@ -828,6 +831,7 @@
             border-bottom: 1px solid rgba(201, 168, 76, 0.3);
             padding-bottom: 2px;
             transition: all 0.3s;
+            font-weight: 600;
         }
 
         .rc-link:hover {
@@ -847,7 +851,7 @@
             }
         }
 
-        @media (min-width: 1920px) {
+        @media(min-width: 1920px) {
             .page-hero-tag {
                 font-size: 0.9rem;
             }
@@ -861,7 +865,7 @@
             }
 
             .rc-meta span {
-                font-size: 0.8rem;
+                font-size: 1.3rem;
             }
 
             .rc-desc {
@@ -873,7 +877,7 @@
             }
 
             .rc-link {
-                font-size: 0.8rem;
+                font-size: 1.4rem;
                 padding-top: 1rem;
             }
 
@@ -888,18 +892,17 @@
     <aside class="sidebar" id="sidebar">
         <svg class="sidebar-deco sidebar-deco-top" width="76" height="76" viewbox="0 0 76 76">
             <g fill="none" stroke="#C9A84C" stroke-width="1">
-                <circle cx="38" cy="38" r="26" />
-                <circle cx="38" cy="38" r="16" />
-                <path
-                    d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z" />
+                <circle cx="38" cy="38" r="26"/>
+                <circle cx="38" cy="38" r="16"/>
+                <path d="M38 12 Q44 26 38 38 Q32 26 38 12Z M38 64 Q44 50 38 38 Q32 50 38 64Z M12 38 Q26 44 38 38 Q26 32 12 38Z M64 38 Q50 44 38 38 Q50 32 64 38Z"/>
             </g>
         </svg>
         <svg class="sidebar-deco sidebar-deco-bot" width="76" height="76" viewbox="0 0 76 76">
             <g fill="none" stroke="#C9A84C" stroke-width="1">
-                <circle cx="38" cy="38" r="26" />
-                <circle cx="38" cy="38" r="8" />
-                <path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38" />
-                <circle cx="38" cy="38" r="3" />
+                <circle cx="38" cy="38" r="26"/>
+                <circle cx="38" cy="38" r="8"/>
+                <path d="M38 12L38 30M38 46L38 64M12 38L30 38M46 38L64 38"/>
+                <circle cx="38" cy="38" r="3"/>
             </g>
         </svg>
         <a href="../index.html" class="sidebar-logo">
@@ -909,37 +912,43 @@
         <div class="sidebar-rule"></div>
         <ul class="nav-list">
             <li>
-                <a href="../index.html">
+                <a
+                    href="../index.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> -->
                     Home
                 </a>
             </li>
             <li>
-                <a href="../about.html">
+                <a
+                    href="../about.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> -->
                     About Us
                 </a>
             </li>
             <li>
-                <a href="../products.html">
+                <a
+                    href="../products.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg> -->
                     Products
                 </a>
             </li>
             <li>
-                <a href="./index.html" class="active">
+                <a
+                    href="./index.html" class="active">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v6l4 2"/></svg> -->
                     Recipes
                 </a>
             </li>
             <li>
-                <a href="../purchase.html">
+                <a
+                    href="../purchase.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> -->
                     Purchase
                 </a>
             </li>
             <li>
-                <a href="../contact.html">
+                <a
+                    href="../contact.html">
                     <!-- <svg class="nav-icon" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> -->
                     Contact Us
                 </a>
@@ -974,10 +983,9 @@
                 <div class="gold-rule-line"></div>
                 <div class="gold-rule-dot"></div>
             </div>
-            <p class="fade-up"
-                style="font-family:'EB Garamond',serif;font-size:0.98rem;color:var(--ink-faint);max-width:540px;line-height:1.85;margin-bottom:0;">
+            <p class="fade-up" style="font-family:'EB Garamond',serif;font-size:0.98rem;color:var(--ink-faint);max-width:540px;line-height:1.85;margin-bottom:0;">
                 Every recipe is crafted to guide you through the cooking process with simplicity and confidence — using
-                your RASA blend as the flavour foundation.</p>
+                                your RASA blend as the flavour foundation.</p>
 
             <div class="recipes-grid">
                 <a href="Rustic-Spice-Chicken-Curry.html" class="rc fade-up">
@@ -994,7 +1002,7 @@
                             <span>320 kcal</span>
                         </div>
                         <p class="rc-desc">A timeless weeknight classic. Rich, warming, and full of authentic Indian
-                            flavour.</p>
+                                                        flavour.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -1012,7 +1020,7 @@
                             <span>410 kcal</span>
                         </div>
                         <p class="rc-desc">The Mangalorean classic that belongs on every food lover's table. Tangy,
-                            buttery, unforgettable.</p>
+                                                        buttery, unforgettable.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -1022,7 +1030,7 @@
                     </div>
                     <div class="rc-body">
                         <div class="rc-blend"></div>
-                        <div class="rc-title">Earthen Spice Chicken Biryani</div>
+                        <div class="rc-title">Earthen Spice Chicken Pulao</div>
                         <div class="rc-meta">
                             <span>⏱ 2 hrs</span>
                             <span>🌶 Medium</span>
@@ -1030,7 +1038,7 @@
                             <span>520 kcal</span>
                         </div>
                         <p class="rc-desc">Fragrant rice layered with perfectly spiced chicken. Worthy of any
-                            celebration.</p>
+                                                        celebration.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -1048,7 +1056,7 @@
                             <span>280 kcal</span>
                         </div>
                         <p class="rc-desc">Delicate fish kissed with coastal spices. Light, healthy, and extraordinary
-                            in flavour.</p>
+                                                        in flavour.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
@@ -1066,18 +1074,15 @@
                             <span>380 kcal</span>
                         </div>
                         <p class="rc-desc">The ideal Sunday showstopper. Bold roast flavours that make the whole family
-                            come to the table.</p>
+                                                        come to the table.</p>
                         <span class="rc-link">View Recipe →</span>
                     </div>
                 </a>
-                <div class="rc fade-up"
-                    style="display:flex;align-items:center;justify-content:center;min-height:280px;background-image: url(../Images/main-bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                <div class="rc fade-up" style="display:flex;align-items:center;justify-content:center;min-height:280px;background-image: url(../Images/main-bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
                     <div style="text-align:center;padding:32px;">
-                        <div
-                            style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;color:var(--gold-deep);margin-bottom:10px;">
+                        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;color:var(--gold-deep);margin-bottom:10px;">
                             More Coming Soon</div>
-                        <p
-                            style="font-family:'EB Garamond',serif;font-size:1rem;color:var(--ink-faint);margin-bottom:22px;line-height:1.7;">
+                        <p style="font-family:'EB Garamond',serif;font-size:1rem;color:var(--ink-faint);margin-bottom:22px;line-height:1.7;">
                             New seasonal recipes crafted by our kitchen team.</p>
                         <a href="../products.html" class="btn-gold" style="font-size:0.55rem;">Explore Products →</a>
                     </div>
@@ -1100,29 +1105,26 @@
                 <div>
                     <img src="../Images/logo.png" alt="RASA" class="footer-logo">
                     <p class="footer-tag">Authentic preservative-free spice blends rooted in Indian tradition, crafted
-                        for modern kitchens.</p>
+                                                for modern kitchens.</p>
                     <div class="footer-socials">
                         <a class="soc-icon" href="#">
-                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C"
-                                stroke-width="1.6">
-                                <rect x="3" y="3" width="18" height="18" rx="5" />
-                                <circle cx="12" cy="12" r="4" />
-                                <circle cx="17.5" cy="6.5" r="1" />
+                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6">
+                                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1"/>
                             </svg>
                         </a>
                         <a class="soc-icon" href="#">
-                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C"
-                                stroke-width="1.6">
-                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
                             </svg>
                         </a>
                         <a class="soc-icon" href="#">
-                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C"
-                                stroke-width="1.6">
-                                <path d="M16 8a6 6 0 016 6v6" />
-                                <rect x="2" y="9" width="4" height="12" />
-                                <circle cx="4" cy="4" r="2" />
-                                <path d="M10 9v12M10 13a4 4 0 018 0" />
+                            <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6">
+                                <path d="M16 8a6 6 0 016 6v6"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                                <path d="M10 9v12M10 13a4 4 0 018 0"/>
                             </svg>
                         </a>
                     </div>
@@ -1169,7 +1171,7 @@
 
                     <form id="rasaFooterForm">
                         <div class="footer-form-group">
-                            <input id="footer-name" type="text" placeholder="Your Name" />
+                            <input id="footer-name" type="text" placeholder="Your Name"/>
                         </div>
                         <div class="footer-form-group footer-phone-row">
                             <select id="footer-cc" class="footer-cc">
@@ -1180,7 +1182,7 @@
                                 <option value="+971">🇦🇪 +971</option>
                                 <option value="+65">🇸🇬 +65</option>
                             </select>
-                            <input id="footer-mobile" type="tel" placeholder="Mobile Number" style="flex: 1" />
+                            <input id="footer-mobile" type="tel" placeholder="Mobile Number" style="flex: 1"/>
                         </div>
                         <div class="footer-form-group">
                             <textarea id="footer-message" placeholder="Your message..."></textarea>
@@ -1188,9 +1190,9 @@
                         <button id="footerSubmitBtn" class="footer-submit">Send Message</button>
 
                         <p id="footerSuccess" style="display:none; color:green; margin-top:10px; font-weight:600;">✅
-                            Message sent successfully!</p>
+                                                        Message sent successfully!</p>
                         <p id="footerError" style="display:none; color:red; margin-top:10px; font-weight:600;">❌
-                            Something went wrong. Please try again.</p>
+                                                        Something went wrong. Please try again.</p>
                     </form>
                 </div>
             </div>
@@ -1207,13 +1209,15 @@
             sb = document.getElementById('sidebar');
         ham.addEventListener('click', () => sb.classList.toggle('open'));
         document.addEventListener('click', e => {
-            if (!sb.contains(e.target) && !ham.contains(e.target))
+            if (! sb.contains(e.target) && ! ham.contains(e.target)) 
                 sb.classList.remove('open');
+            
 
         });
         window.addEventListener('load', () => {
-            if (typeof gsap === 'undefined')
+            if (typeof gsap === 'undefined') 
                 return;
+            
 
             gsap.registerPlugin(ScrollTrigger);
             document.querySelectorAll('.fade-up').forEach(el => {
@@ -1235,6 +1239,4 @@
         });
     </script>
     <script src="../email.js"></script>
-</body>
-
-</html>
+</body></html>
