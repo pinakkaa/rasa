@@ -50,19 +50,21 @@
 
     .about-body p {
       font-family: "EB Garamond", serif;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       color: var(--ink-faint);
       line-height: 1.5;
       margin-bottom: 22px;
     }
 
     .about-body p strong {
-      color: var(--ink-mid);
+      /* color: var(--ink-mid); */
+      color: var(--gold-deep);
       font-weight: 600;
     }
 
     .kw {
-      color: var(--gold-deep);
+      /* color: var(--gold-deep); */
+      color: #3d2600;
       font-weight: 600;
       font-style: italic;
     }
@@ -221,11 +223,17 @@
     }
 
     .quote-text {
-      font-size: 1rem;
+      font-size: 1.8rem;
       line-height: 1.8;
       color: #fff;
       font-family: "Playfair Display", serif;
       position: relative;
+    }
+    .quote-text span{
+      font-size: 1.6rem;
+      color: #3d2600;
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
     /* quotation styling */
@@ -296,6 +304,7 @@
     @media (min-width: 1920px) {
       .page-hero-tag {
         font-size: 0.9rem;
+        color: #3d2600;
       }
 
       .eyebrow {
@@ -321,7 +330,8 @@
 
     @media (min-width: 1820px) {
       .quote-text {
-        font-size: 1.5rem;
+        font-size: 2.2rem;
+        line-height: 1.6;
       }
     }
   </style>
@@ -437,10 +447,10 @@
       <section class="rasa-quote-section">
         <div class="quote-container">
           <p class="quote-text">
-            “We started RASA with the belief that anyone can cook with RASA.
+            “We started RASA with the belief that <span>anyone can cook with RASA.</span>
             Traditional heritage recipes have been simplified so they're easy to prepare,
-            with no artificial additives, no flavourings, no added artificial colours,
-            and no preservatives.”
+            with <span>no artificial additives, no flavourings, no added artificial colours,
+              and no preservatives.</span>”
           </p>
         </div>
       </section>
